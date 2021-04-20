@@ -658,9 +658,9 @@ close_code.h
 
 ../SDL/include/close_code.h
 
-C:/Users/Brandon/Desktop/DonkeyC/application.c
+C:/Users/adrii/OneDrive/Escritorio/Chango/application.c
 
-C:/Users/Brandon/Desktop/DonkeyC/main.c
+C:/Users/adrii/OneDrive/Escritorio/Chango/main.c
 stdio.h
 -
 SDL.h
@@ -672,5 +672,7 @@ stdbool.h
 SDL_image.h
 -
 application.c
-C:/Users/Brandon/Desktop/DonkeyC/application.c
+C:/Users/adrii/OneDrive/Escritorio/Chango/application.c
+winsock2.h
+-
 
