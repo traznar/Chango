@@ -675,4 +675,8 @@ application.c
 C:/Users/adrii/OneDrive/Escritorio/Chango/application.c
 winsock2.h
 -
+pthread.h
+-
+unistd.h
+-
 
