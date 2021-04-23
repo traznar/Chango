@@ -89,32 +89,119 @@ _Noreturn void* update(){
     }
 }
 
-void initCanvas(void *args){
-    bool quit = false;
+typedef struct {
+    int x,y;
+    short life;
+    char *name;
+    SDL_Texture *donkeyImage;
+} DonkeyJr;
+
+typedef struct {
+    //Jugadores
+
+    DonkeyJr donkeyJr;
+
+
+} GameState;
+int processEvents(SDL_Window *window, GameState *game)
+{
     SDL_Event event;
-    SDL_Init(SDL_INIT_VIDEO);
-    IMG_Init(IMG_INIT_JPG);
-    SDL_Window * window = SDL_CreateWindow("SDL2 Displaying Image",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
-    SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
-    SDL_Surface * image = IMG_Load("Donkey.png");
-    SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
-    while (!quit){
-        SDL_WaitEvent(&event);
-        switch (event.type){
+    int done=0;
+    while (SDL_PollEvent(&event))
+    {
+        switch (event.type) {
+            case SDL_WINDOWEVENT_CLOSE:
+            {
+                if (window){
+                    SDL_DestroyWindow(window);
+                    window=NULL;
+                    done=1;
+                }
+            }
+                break;
+            case SDL_KEYDOWN:
+            {
+                switch (event.key.keysym.sym) {
+                    case SDLK_ESCAPE:
+                        done=1;
+                        break;
+                }
+            }
+                break;
             case SDL_QUIT:
-                quit = true;
+                done =1;
                 break;
         }
-        //SDL_Rect dstrect = { 5, 5, 320, 240 };
-        //SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
-        SDL_RenderPresent(renderer);
     }
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(image);
-    SDL_DestroyRenderer(renderer);
+    const Uint8 *state =SDL_GetKeyboardState(NULL);
+    if (state[SDL_SCANCODE_LEFT])
+    {
+        game->donkeyJr.x -=10;
+    }
+    if (state[SDL_SCANCODE_RIGHT])
+    {
+        game->donkeyJr.x +=10;
+    }
+    if (state[SDL_SCANCODE_UP])
+    {
+        game->donkeyJr.y -=10;
+    }
+    if (state[SDL_SCANCODE_DOWN])
+    {
+        game->donkeyJr.y +=10;
+
+    }
+    return done;
+}
+
+void doRender(SDL_Renderer *renderer, GameState *game)
+{
+    //El fondo del window va a hacer azul, esta vara es como
+    //agarrar un lapiz de un color para pintar pero aun no ha pintado
+    SDL_SetRenderDrawColor(renderer,0,0,255,255);
+    //Pasa el fonde de pantalla a azul
+    SDL_RenderClear(renderer);
+    //MIN 0:48
+    SDL_Rect donkeyRect = {game->donkeyJr.x,game->donkeyJr.y,80,80};
+    SDL_RenderCopy(renderer,game->donkeyJr.donkeyImage,NULL,&donkeyRect);
+    SDL_RenderPresent(renderer);
+
+}
+
+void initCanvas(){
+    GameState gameState;
+    SDL_Window  *window=NULL;
+    SDL_Renderer *renderer=NULL;
+    SDL_Surface *donkeyImageSurface=NULL; //source pixels of the image
+
+
+    SDL_Init(SDL_INIT_VIDEO);
+    gameState.donkeyJr.x=320-40;
+    gameState.donkeyJr.y= 240-40;
+
+    window=SDL_CreateWindow("CHANGO Jr",
+                            SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED
+            ,720,680,0);
+    renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    donkeyImageSurface= IMG_Load("Donkey.png");
+    if(donkeyImageSurface ==NULL){
+        printf("No se encontro la ruta de la imagen! \n\n");
+        SDL_Quit();
+        return ;
+    }
+    gameState.donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(renderer,donkeyImageSurface);
+    SDL_FreeSurface(donkeyImageSurface);
+    int done=0;
+
+    while(!done)
+    {
+        done=processEvents(window, &gameState);
+        doRender(renderer,&gameState);
+    }
+    SDL_DestroyTexture(gameState.donkeyJr.donkeyImage);
+
     SDL_DestroyWindow(window);
-    IMG_Quit();
+    SDL_DestroyRenderer(renderer);
     SDL_Quit();
 }
 
