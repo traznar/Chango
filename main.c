@@ -10,7 +10,7 @@
 #include "graphics.h"
 
 #define MAX_FPS 20
-#define IP "192.168.18.27"
+#define IP "192.168.0.6"
 
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
@@ -28,13 +28,13 @@ static SDL_Renderer *renderer=NULL;
 
 
 
-bool makeRequest(bool printState){
+bool makeRequest(bool printState,char* message){
     int state;
     WSADATA wsa;
     SOCKET mySocket;
     bool connected=false;
     struct sockaddr_in server;
-    char *message , server_reply[400];
+    char server_reply[400];
         server.sin_family = AF_INET;
         server.sin_addr.s_addr = inet_addr(IP);
         server.sin_port = htons( 8081 );
@@ -68,7 +68,7 @@ bool makeRequest(bool printState){
 
 
     //ENVIO LA PETICION---------------------------------------------------------------------------------------->
-    message = "request\n\r";   //INTENTO MANDAR UN MENNSAJE  SI SE ENVIA EXITOSAMENTE ESCRIBE DATA SEND, SI NO SEND FAILED Y CIERRA
+    //message = "request";   //INTENTO MANDAR UN MENNSAJE  SI SE ENVIA EXITOSAMENTE ESCRIBE DATA SEND, SI NO SEND FAILED Y CIERRA
     if(send(mySocket , message , strlen(message) , 0) < 0){
         puts("!!: envio fallido");
         return false;
@@ -88,7 +88,7 @@ bool makeRequest(bool printState){
 }
 
 bool initClient(){
-    return makeRequest(true);
+    return makeRequest(true,"request\n\r");
 }
 
 
@@ -125,21 +125,33 @@ int processEvents(SDL_Window *window, GameState *game)
         }
     }
     const Uint8 *state =SDL_GetKeyboardState(NULL);
-    if (state[SDL_SCANCODE_LEFT])
+    if (state[SDL_SCANCODE_A])
     {
         game->donkeyJr.x -=10;
+        char* left;
+        left="left\n\r";
+        makeRequest(FALSE, left);
     }
-    if (state[SDL_SCANCODE_RIGHT])
+    if (state[SDL_SCANCODE_D])
     {
         game->donkeyJr.x +=10;
+        char* right;
+        right="rigth\n\r";
+        makeRequest(FALSE, right);
     }
-    if (state[SDL_SCANCODE_UP])
+    if (state[SDL_SCANCODE_W])
     {
         game->donkeyJr.y -=10;
+        char* up;
+        up="up\n\r";
+        makeRequest(FALSE, up);
     }
-    if (state[SDL_SCANCODE_DOWN])
+    if (state[SDL_SCANCODE_S])
     {
         game->donkeyJr.y +=10;
+        char* down;
+        down="down\n\r";
+        makeRequest(FALSE, down);
 
     }
     return done;

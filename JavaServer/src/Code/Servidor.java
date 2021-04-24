@@ -42,8 +42,8 @@ public class Servidor {
                 BufferedReader reader= new BufferedReader(streamReader);
                 puenteS.getOutputStream().write("Hola cliente \n".getBytes());
                 
-                //String value= reader.readLine();
-                //print("@ Mensaje del cliente: "+ value);
+                String value= reader.readLine();
+                print("@ Mensaje del cliente: "+ value);
                 
                 //cierro el socket y el reader
                 reader.close();
