@@ -1,23 +1,33 @@
 #include <stdio.h>
 #include <SDL.h>
 #include <stdbool.h>
-#include <SDL_image.h>
 #include<winsock2.h>
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 #include <pthread.h>
-#include <unistd.h>
+
+#include "usleep.h"
+
 #include "graphics.h"
 
 #define MAX_FPS 20
 #define IP "192.168.18.27"
 
 static int MAX_ATTEMPTS =5;
+static GameState gameState;
+static SDL_Window  *window=NULL;
+static SDL_Renderer *renderer=NULL;
+
+
+
 
 /**
  * @def makeRequest realiza una peticion al servidor, el cual le respondera con un Json
  * @param printState : este parametro indica si queremos que se impriman los estados
  * @return  bool : en caso que la peticion fracase, se retorna un false
  */
+
+
+
 bool makeRequest(bool printState){
     int state;
     WSADATA wsa;
@@ -82,12 +92,6 @@ bool initClient(){
 }
 
 
-_Noreturn void* update(){
-    while(true){
-        makeRequest(false);
-        sleep(1/MAX_FPS);
-    }
-}
 
 
 int processEvents(SDL_Window *window, GameState *game)
@@ -141,11 +145,9 @@ int processEvents(SDL_Window *window, GameState *game)
     return done;
 }
 
-
 void initCanvas(){
-    GameState gameState;
-    SDL_Window  *window=NULL;
-    SDL_Renderer *renderer=NULL;
+
+
     SDL_Init(SDL_INIT_VIDEO);
     window=SDL_CreateWindow("CHANGO Jr",
                             SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED
@@ -153,12 +155,26 @@ void initCanvas(){
     renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     gameState.renderer= renderer;
     loadGame(&gameState);
-    int done=0;
 
-    while(!done)
-    {
+
+    /* while(!done)
+     {
+         done=processEvents(window, &gameState);
+         doRender(renderer,&gameState);
+     }*/
+
+}
+void* update(){
+    initCanvas();
+    int done=0;
+    while(!done){
+        //makeRequest(false);
+
         done=processEvents(window, &gameState);
         doRender(renderer,&gameState);
+
+        usleep(1000000/MAX_FPS);
+
     }
     SDL_DestroyTexture(gameState.donkeyJr.donkeyImage);
     SDL_DestroyTexture(gameState.liana->lianaImagen);
@@ -171,15 +187,19 @@ void initCanvas(){
     SDL_Quit();
 }
 
+
+
+
 int main(int argc, char* args[]){
     //MENSAJE DE INICIO
-    initCanvas();
-   // bool connect= initClient();
+
+    bool connect= initClient();
     //CONEXION POSTERIOR
-    /*if(connect){
+   if(connect){
+
         pthread_t thread_Update;
         pthread_create(&thread_Update, NULL, update, NULL);
         pthread_join(thread_Update, NULL);
-    }*/
+    }
     return 0;
 }
