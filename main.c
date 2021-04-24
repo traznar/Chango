@@ -76,7 +76,7 @@ bool makeRequest(bool printState,char* message){
 
 
     //ANALIZO SI RECIBO UNA RESPUESTA DEL SERVIDOR, LUEGO CIERRO-------------------------------------------------->
-    if((state=recv(mySocket , server_reply , 400 , 0)) == SOCKET_ERROR){
+    if((state=recv(mySocket , server_reply , 400 , 0)) == SOCKET_ERROR){//guarda la respuesta en server_reply[state]
         printf("!!: No se recibio respuesta \n!!: Error %i",state);
         return false;
     }
@@ -179,8 +179,11 @@ void initCanvas(){
 void* update(){
     initCanvas();
     int done=0;
+    char* fpc;
+    fpc= "se va a morir\n\r";
     while(!done){
-        //makeRequest(false);
+
+       //makeRequest(true,fpc);
 
         done=processEvents(window, &gameState);
         doRender(renderer,&gameState);

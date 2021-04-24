@@ -20,7 +20,6 @@ typedef struct {
     int x,y;
     SDL_Texture *aguaImagen;
 } Agua;
-
 typedef struct {
     int x,y;
     SDL_Texture *lianaImagen;
