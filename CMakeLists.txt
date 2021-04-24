@@ -10,6 +10,6 @@ link_directories(${SDL2_LIB_DIR})
 
 link_libraries(ws2_32 wsock32)
 
-add_executable(DonkeyC main.c application.c)
+add_executable(DonkeyC main.c graphics.c graphics.h)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image)
