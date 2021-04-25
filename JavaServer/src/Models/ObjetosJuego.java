@@ -1,37 +1,39 @@
-package logica;
+package Models;
 
-public class ObjetosJuego {
-	private int posiX;
-	private int posiY;
-	private int size;
+public abstract class ObjetosJuego {
+	protected int posX;
+	protected int posY;
+	protected int size;
+	
 	
 	public ObjetosJuego(int posiX,int posiY,int size){
-		this.posiX=posiX;
-		this.posiY=posiY;
+		this.posX=posiX;
+		this.posY=posiY;
 		this.size=size;
 	}
 	public int getPosiX(){
-		return posiX;
+		return posX;
 	}
 	public int getPosiY(){
-		return posiY;
+		return posY;
 	}
 	public int getSize(){
 		return size;
 	}
 	public void setPosiY(int posiY){
-		this.posiY=posiY;
+		this.posY=posiY;
 	}
 	public void setPosiX(int posiX){
-		this.posiX=posiX;
+		this.posX=posiX;
 	}
 	public void setSize(int size){
 		this.size=size;
 	}
 	public int getPosiTotalX(){
-		return (posiX+size);
+		return (posX+size);
 	}
 	public int getPosiTotalY(){
-		return (posiY+size);
+		return (posY+size);
 	}	
+	public abstract String toJson(); 
 }

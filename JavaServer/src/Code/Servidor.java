@@ -27,6 +27,8 @@ public class Servidor {
         	
             ServerSocket servidor= new ServerSocket(port); //intenta hacer la conexion
             print("Server iniciado");
+            GameStateController controller=GameStateController.getInstance(); 
+        
 
             while (true) {
                 Socket puenteS = servidor.accept();
@@ -40,7 +42,9 @@ public class Servidor {
                 
                 InputStreamReader streamReader= new InputStreamReader(puenteS.getInputStream());
                 BufferedReader reader= new BufferedReader(streamReader);
-                puenteS.getOutputStream().write("Hola cliente \n".getBytes());
+                
+                
+                puenteS.getOutputStream().write((controller.getGameData().replace("\\", "")+"\n").getBytes());
                 
                 String value= reader.readLine();
                 print("@ Mensaje del cliente: "+ value);

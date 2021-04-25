@@ -10,8 +10,8 @@
 #include "graphics.h"
 
 #define MAX_FPS 20
-#define IP "192.168.0.6"
-
+//#define IP "192.168.0.6"
+#define IP "192.168.18.27"
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -183,7 +183,7 @@ void* update(){
     fpc= "se va a morir\n\r";
     while(!done){
 
-       //makeRequest(true,fpc);
+       makeRequest(true,fpc);
 
         done=processEvents(window, &gameState);
         doRender(renderer,&gameState);
