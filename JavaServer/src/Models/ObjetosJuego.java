@@ -20,6 +20,11 @@ public abstract class ObjetosJuego {
 	public int getSize(){
 		return size;
 	}
+	public void setPosiXY(int posiX,int posiY,int size){
+		this.posX=posiX;
+		this.posY=posiY;
+		this.size=size;
+	}
 	public void setPosiY(int posiY){
 		this.posY=posiY;
 	}
