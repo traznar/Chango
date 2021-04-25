@@ -10,8 +10,8 @@
 #include "graphics.h"
 
 #define MAX_FPS 20
-//#define IP "192.168.0.6"
-#define IP "192.168.18.27"
+#define IP "192.168.0.6"
+//#define IP "192.168.18.27"
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -166,6 +166,7 @@ void initCanvas(){
             ,620,620,0);
     renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     gameState.renderer= renderer;
+    TTF_Init();
     loadGame(&gameState);
 
 
@@ -183,7 +184,7 @@ void* update(){
     fpc= "se va a morir\n\r";
     while(!done){
 
-       makeRequest(true,fpc);
+        //makeRequest(true,fpc);
 
         done=processEvents(window, &gameState);
         doRender(renderer,&gameState);
@@ -196,9 +197,10 @@ void* update(){
     SDL_DestroyTexture(gameState.agua.aguaImagen);
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);
     SDL_DestroyTexture(gameState.kong.kongImagen);
-
+    destroyLabel(&gameState);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+    TTF_Quit();
     SDL_Quit();
 }
 

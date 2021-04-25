@@ -4,8 +4,7 @@
 
 #ifndef DONKEYC_GRAPHICS_H
 #define DONKEYC_GRAPHICS_H
-
-
+#include "SDL_ttf.h"
 typedef struct {
     int x,y;
     short life;
@@ -28,6 +27,10 @@ typedef struct {
     int x,y;
     SDL_Texture *kongImagen;
 } Kong;
+typedef struct {
+    int x,y;
+    SDL_Texture *lagartoImagen;
+} Lagarto;
 
 typedef struct {
     //Jugadores
@@ -37,10 +40,16 @@ typedef struct {
     Liana liana[15];
     Kong kong;
     SDL_Renderer *renderer;
-} GameState;
+    SDL_Texture *label;
+    SDL_Texture *labelvidas;
+    Lagarto lagarto;
 
+    TTF_Font *font;
+} GameState;
+void destroyLabel(GameState *game);
+void drawLabel(GameState *game);
 void loadGame(GameState *game);
 void doRender(SDL_Renderer *renderer, GameState *game);
-
+void showScore(GameState *game);
 
 #endif //DONKEYC_GRAPHICS_H

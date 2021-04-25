@@ -7,6 +7,48 @@
 #include <SDL_image.h>
 #include <unistd.h>
 #include "graphics.h"
+#include <stdio.h>
+#include <SDL.h>
+#include <stdbool.h>
+#include <SDL_image.h>
+#include <unistd.h>
+#include "graphics.h"
+char str[100];
+char str1[100];
+
+
+
+void showScore(GameState *game) {
+    SDL_Color white= {255,255,255,255};
+    sprintf(str,"%d",game->donkeyJr.x);
+    sprintf(str1,"%d",game->donkeyJr.y);
+
+    SDL_Surface *tmp = TTF_RenderText_Blended(game->font, strcat(str," <-Puntaje") , white);
+    game->label = SDL_CreateTextureFromSurface(game->renderer, tmp);
+
+    SDL_Surface *tmp2 = TTF_RenderText_Blended(game->font, strcat(str1," <-Vidas") , white);
+    game->labelvidas =SDL_CreateTextureFromSurface(game->renderer, tmp2);
+
+    SDL_FreeSurface(tmp);
+    SDL_FreeSurface(tmp2);
+}
+
+
+void drawLabel(GameState *game) {
+    SDL_Rect textRect = {500, 20 ,120,60};
+    SDL_RenderCopy(game->renderer,game->label,NULL, &textRect);
+
+    SDL_Rect vidaRect = {500, 50 ,120,60};
+    SDL_RenderCopy(game->renderer,game->labelvidas,NULL, &vidaRect);
+}
+
+
+void destroyLabel(GameState *game) {
+    SDL_DestroyTexture(game->label);
+    game->label =NULL;
+    SDL_DestroyTexture(game->labelvidas);
+    game->labelvidas =NULL;
+}
 
 void doRender(SDL_Renderer *renderer, GameState *game) {
     //El fondo del window va a hacer azul, esta vara es como
@@ -38,6 +80,9 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect plataformaRect7 ={game->plataformas[6].x,game->plataformas[6].y,240,20};
     SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);
 
+    SDL_Rect lagartoRect ={game->lagarto.x,game->lagarto.y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto.lagartoImagen,NULL,&lagartoRect);
+
     for(int i =0; i<7; i++) {
         SDL_Rect lianaRect = {game->liana[i].x, game->liana[i].y, 6, 120};
         SDL_RenderCopy(renderer, game->liana[i].lianaImagen, NULL, &lianaRect);
@@ -50,6 +95,8 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect aguaRect ={game->agua.x,game->agua.y,470,15};
     SDL_RenderCopy(renderer,game->agua.aguaImagen,NULL,&aguaRect);
 
+    showScore(game);
+    drawLabel(game);
 
     SDL_RenderCopy(renderer,game->donkeyJr.donkeyImage,NULL,&donkeyRect);
 
@@ -64,6 +111,8 @@ void loadGame(GameState *game) {
     SDL_Surface *aguaImageSurface=NULL;
     SDL_Surface *lianaImageSurface=NULL;
     SDL_Surface *kongImageSurface=NULL;
+    SDL_Surface *lagartoImageSurface=NULL;
+
 
 
     plataformaImageSurface= IMG_Load("plataforma.png");
@@ -71,6 +120,8 @@ void loadGame(GameState *game) {
     aguaImageSurface =IMG_Load("agua.png");
     lianaImageSurface =IMG_Load("liana.png");
     kongImageSurface =IMG_Load("kong.png");
+    lagartoImageSurface =IMG_Load("lagarto.png");
+
 
     if(donkeyImageSurface ==NULL){
         printf("No se encontro la ruta de la imagen de Donkey.png! \n\n");
@@ -81,6 +132,13 @@ void loadGame(GameState *game) {
         printf("No se encontro la ruta de la imagen plataforma.png! \n\n");
         SDL_Quit();
         return ;
+    }
+    game->font= TTF_OpenFont("FreeMonoOblique.ttf",48);
+    if(!game->font)
+    {
+        printf("No se encontro el file del font\n\n");
+        SDL_Quit();
+        exit(1);
     }
 
     game->donkeyJr.x=12;
@@ -111,11 +169,16 @@ void loadGame(GameState *game) {
     game->agua.x=150;
     game->agua.y=605;
 
+    game->lagarto.x=150;
+    game->lagarto.y=150;
+
     game->kong.x=0;
     game->kong.y=55;
 
     game->donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
     game->kong.kongImagen =SDL_CreateTextureFromSurface(game->renderer,kongImageSurface);
+
+    game->lagarto.lagartoImagen = SDL_CreateTextureFromSurface(game->renderer,lagartoImageSurface);
 
     for(int i =0; i<7; i++){
         game->liana[i].x= game->plataformas[i].x+20;
@@ -143,6 +206,6 @@ void loadGame(GameState *game) {
     SDL_FreeSurface(aguaImageSurface);
     SDL_FreeSurface(lianaImageSurface);
     SDL_FreeSurface(kongImageSurface);
+    SDL_FreeSurface(lagartoImageSurface);
 
 }
-
