@@ -145,7 +145,7 @@ bool makeRequest(bool printState,char* message){
     printf("\n\n\n");
     */
     //===============================Ejemplo de Arrays===========================>
-    printf("\n\n\n");
+    /*printf("\n\n\n");
     cJSON *array = cJSON_Parse(getStringFromJson(Json, "plataformas"));
     int n = cJSON_GetArraySize(array);
     for (int i = 0; i < n; i++) {
@@ -153,8 +153,27 @@ bool makeRequest(bool printState,char* message){
         elem = cJSON_GetArrayItem(array, i);
         char* text=cJSON_Print(elem);
         printf(text);
-    }
+    }*/
     //===============================Ejemplo de Arrays===========================>
+    //Llamando a creacion de plataformas
+    printf("\n\n\n");
+    cJSON *arrayPlat = cJSON_Parse(getStringFromJson(Json, "plataformas"));
+    int num = cJSON_GetArraySize(arrayPlat);
+
+    for (int i = 0; i < num; i++) {
+        cJSON *elemt;
+        elemt = cJSON_GetArrayItem(arrayPlat, i);
+        char* text=cJSON_Print(elemt);
+        printf(text);
+        int posX=getNumberFromJson(text,"posX");
+        int posY=getNumberFromJson(text,"posY");
+
+        cargarPlataforma(&gameState,i,posX,posY);
+
+
+
+
+    }
     closesocket(mySocket);
     return true;
 }

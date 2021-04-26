@@ -64,7 +64,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
     //Aca se crean y se manda a renderizar las plataformas
     //Se copian y pegan tres porque si se hace con un for, no se posicionan como se quiere
-    SDL_Rect plataformaRect ={game->plataformas[0].x,game->plataformas[0].y,150,20};
+    /*SDL_Rect plataformaRect ={game->plataformas[0].x,game->plataformas[0].y,150,20};
     SDL_RenderCopy(renderer,game->plataformas[0].plataformaImagen,NULL,&plataformaRect);
     SDL_Rect plataformaRect2 ={game->plataformas[1].x,game->plataformas[1].y,140,20};
     SDL_RenderCopy(renderer,game->plataformas[1].plataformaImagen,NULL,&plataformaRect2);
@@ -78,7 +78,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect plataformaRect6 ={game->plataformas[5].x,game->plataformas[5].y,240,20};
     SDL_RenderCopy(renderer,game->plataformas[5].plataformaImagen,NULL,&plataformaRect6);
     SDL_Rect plataformaRect7 ={game->plataformas[6].x,game->plataformas[6].y,240,20};
-    SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);
+    SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);*/
 
     SDL_Rect lagartoRect ={game->lagarto.x,game->lagarto.y,14,32};
     SDL_RenderCopy(renderer,game->lagarto.lagartoImagen,NULL,&lagartoRect);
@@ -107,26 +107,51 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
 }
 
-void crearPlataforma(int posX, int posY)
-{
+
+
+void crearPlataforma(int posX, int posY, GameState *game, int i) {
+    SDL_Rect plataformaRect ={game->plataformas[i].x,game->plataformas[i].y,150,20};
+    SDL_RenderCopy(game->renderer,game->plataformas[i].plataformaImagen,NULL,&plataformaRect);
+}
+
+
+
+void cargarPlataforma(GameState *game, int i, int posX, int posY) {
+    SDL_Surface *plataformaImageSurface=NULL;
+    plataformaImageSurface= IMG_Load("plataforma.png");
+    game->plataformas[i].x= posX;
+    game->plataformas[i].y= posY;
+    game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
+    crearPlataforma(posX,posY,game,i);
+
+
+
+
+   // SDL_FreeSurface(plataformaImageSurface);
+
 
 }
-void crearCocodrilos(int posX, int posY)
-{
+
+
+void crearCocodrilos(int posX, int posY) {
 
 }
-void crearLianas(int posX, int posY)
-{
+
+
+
+void crearLianas(int posX, int posY) {
 
 }
-void crearFrutas(int posX, int posY)
-{
+
+
+
+void crearFrutas(int posX, int posY) {
 
 }
 
 void loadGame(GameState *game) {
     SDL_Surface *donkeyImageSurface=NULL; //source pixels of the image
-    SDL_Surface *plataformaImageSurface=NULL;
+    //SDL_Surface *plataformaImageSurface=NULL;
     SDL_Surface *aguaImageSurface=NULL;
     SDL_Surface *lianaImageSurface=NULL;
     SDL_Surface *kongImageSurface=NULL;
@@ -135,7 +160,7 @@ void loadGame(GameState *game) {
 
 
 
-    plataformaImageSurface= IMG_Load("plataforma.png");
+   // plataformaImageSurface= IMG_Load("plataforma.png");
     donkeyImageSurface= IMG_Load("Donkey.png");
     aguaImageSurface =IMG_Load("agua.png");
     lianaImageSurface =IMG_Load("liana.png");
@@ -148,11 +173,11 @@ void loadGame(GameState *game) {
         SDL_Quit();
         return ;
     }
-    if(plataformaImageSurface ==NULL){
+   /* if(plataformaImageSurface ==NULL){
         printf("No se encontro la ruta de la imagen plataforma.png! \n\n");
         SDL_Quit();
         return ;
-    }
+    }*/
     game->font= TTF_OpenFont("FreeMonoOblique.ttf",48);
     if(!game->font)
     {
@@ -163,7 +188,7 @@ void loadGame(GameState *game) {
 
     game->donkeyJr.x=12;
     game->donkeyJr.y= 555;
-
+/*
     game->plataformas[0].x= 0;
     game->plataformas[0].y=605;
 
@@ -184,7 +209,7 @@ void loadGame(GameState *game) {
 
     game->plataformas[6].x= 320;
     game->plataformas[6].y= 0;
-
+*/
 
     game->agua.x=150;
     game->agua.y=605;
@@ -213,12 +238,12 @@ void loadGame(GameState *game) {
         game->liana[i].x= game->plataformas[i].x+70;
         game->liana[i].y= game->plataformas[i].y;
     }
-    for(int i =0; i<7; i++) {
+  /*  for(int i =0; i<7; i++) {
         game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
     }
     for(int i =7; i<15; i++) {
         game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
-    }
+    }*/
     game->agua.aguaImagen=SDL_CreateTextureFromSurface(game->renderer,aguaImageSurface);
     for(int i =0; i<7; i++) {
         game->liana[i].lianaImagen = SDL_CreateTextureFromSurface(game->renderer, lianaImageSurface);
@@ -227,7 +252,7 @@ void loadGame(GameState *game) {
         game->liana[i].lianaImagen = SDL_CreateTextureFromSurface(game->renderer, lianaImageSurface);
     }
     SDL_FreeSurface(donkeyImageSurface);
-    SDL_FreeSurface(plataformaImageSurface);
+   // SDL_FreeSurface(plataformaImageSurface);
     SDL_FreeSurface(aguaImageSurface);
     SDL_FreeSurface(lianaImageSurface);
     SDL_FreeSurface(kongImageSurface);

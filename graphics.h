@@ -56,5 +56,10 @@ void drawLabel(GameState *game);
 void loadGame(GameState *game);
 void doRender(SDL_Renderer *renderer, GameState *game);
 void showScore(GameState *game);
+void crearPlataforma(int posX, int posY, GameState *game, int i);
+void crearCocodrilos(int posX, int posY);
+void crearLianas(int posX, int posY);
+void crearFrutas(int posX, int posY);
+void cargarPlataforma(GameState *game,int i,int posX, int posY);
 
 #endif //DONKEYC_GRAPHICS_H
