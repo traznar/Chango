@@ -64,7 +64,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
     //Aca se crean y se manda a renderizar las plataformas
     //Se copian y pegan tres porque si se hace con un for, no se posicionan como se quiere
-    /*SDL_Rect plataformaRect ={game->plataformas[0].x,game->plataformas[0].y,150,20};
+    SDL_Rect plataformaRect ={game->plataformas[0].x,game->plataformas[0].y,150,20};
     SDL_RenderCopy(renderer,game->plataformas[0].plataformaImagen,NULL,&plataformaRect);
     SDL_Rect plataformaRect2 ={game->plataformas[1].x,game->plataformas[1].y,140,20};
     SDL_RenderCopy(renderer,game->plataformas[1].plataformaImagen,NULL,&plataformaRect2);
@@ -78,7 +78,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect plataformaRect6 ={game->plataformas[5].x,game->plataformas[5].y,240,20};
     SDL_RenderCopy(renderer,game->plataformas[5].plataformaImagen,NULL,&plataformaRect6);
     SDL_Rect plataformaRect7 ={game->plataformas[6].x,game->plataformas[6].y,240,20};
-    SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);*/
+    SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);
 
     SDL_Rect lagartoRect ={game->lagarto.x,game->lagarto.y,14,32};
     SDL_RenderCopy(renderer,game->lagarto.lagartoImagen,NULL,&lagartoRect);
@@ -109,10 +109,10 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
 
 
-void crearPlataforma(int posX, int posY, GameState *game, int i) {
+/*void crearPlataforma(int posX, int posY, GameState *game, int i) {
     SDL_Rect plataformaRect ={game->plataformas[i].x,game->plataformas[i].y,150,20};
     SDL_RenderCopy(game->renderer,game->plataformas[i].plataformaImagen,NULL,&plataformaRect);
-}
+}*/
 
 
 
@@ -122,7 +122,7 @@ void cargarPlataforma(GameState *game, int i, int posX, int posY) {
     game->plataformas[i].x= posX;
     game->plataformas[i].y= posY;
     game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
-    crearPlataforma(posX,posY,game,i);
+
 
 
 

@@ -169,9 +169,7 @@ bool makeRequest(bool printState,char* message){
         int posY=getNumberFromJson(text,"posY");
 
         cargarPlataforma(&gameState,i,posX,posY);
-
-
-
+       // crearPlataforma(posX,posY,&gameState,i);
 
     }
     closesocket(mySocket);
