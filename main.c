@@ -12,8 +12,8 @@
 #include "cJSON.c"
 
 #define MAX_FPS 20
-//#define IP "192.168.0.6"
-#define IP "192.168.18.27"
+#define IP "192.168.0.6"
+//#define IP "192.168.18.27"
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -42,7 +42,7 @@ bool makeRequest(bool printState,char* message){
     SOCKET mySocket;
     bool connected=false;
     struct sockaddr_in server;
-    char server_reply[400];
+    char server_reply[6000];
         server.sin_family = AF_INET;
         server.sin_addr.s_addr = inet_addr(IP);
         server.sin_port = htons( 8081 );
@@ -89,7 +89,7 @@ bool makeRequest(bool printState,char* message){
         return false;
     }
     server_reply[state]='\0';
-   // if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
+    if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
 
     char *Json = cJSON_Print(cJSON_Parse(server_reply));
     char *dataDelJugador=getStringFromJson(Json, "playerData");
@@ -143,28 +143,37 @@ int processEvents(SDL_Window *window, GameState *game)
     const Uint8 *state =SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_A])
     {
-        game->donkeyJr.x -=10;
+        if(0<game->donkeyJr.x) {
+            game->donkeyJr.x -= 10;
+        }
         char* left;
         left="left\n\r";
         makeRequest(FALSE, left);
     }
     if (state[SDL_SCANCODE_D])
     {
-        game->donkeyJr.x +=10;
+        if(572>game->donkeyJr.x) {
+
+            game->donkeyJr.x += 10;
+        }
         char* right;
         right="rigth\n\r";
         makeRequest(FALSE, right);
     }
     if (state[SDL_SCANCODE_W])
     {
-        game->donkeyJr.y -=10;
+        if(5<game->donkeyJr.y){
+            game->donkeyJr.y -= 10;
+        }
         char* up;
         up="up\n\r";
         makeRequest(FALSE, up);
     }
     if (state[SDL_SCANCODE_S])
     {
-        game->donkeyJr.y +=10;
+        if(565>game->donkeyJr.y) {
+            game->donkeyJr.y += 10;
+        }
         char* down;
         down="down\n\r";
         makeRequest(FALSE, down);
@@ -213,6 +222,7 @@ void* update(){
     SDL_DestroyTexture(gameState.agua.aguaImagen);
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);
     SDL_DestroyTexture(gameState.kong.kongImagen);
+    SDL_DestroyTexture(gameState.frutas->frutasImagen);
     destroyLabel(&gameState);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);

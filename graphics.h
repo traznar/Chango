@@ -31,6 +31,10 @@ typedef struct {
     int x,y;
     SDL_Texture *lagartoImagen;
 } Lagarto;
+typedef struct {
+    int x,y;
+    SDL_Texture *frutasImagen;
+} Frutas;
 
 typedef struct {
     //Jugadores
@@ -43,6 +47,7 @@ typedef struct {
     SDL_Texture *label;
     SDL_Texture *labelvidas;
     Lagarto lagarto;
+    Frutas frutas[100];
 
     TTF_Font *font;
 } GameState;

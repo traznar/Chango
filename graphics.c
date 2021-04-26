@@ -83,6 +83,9 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect lagartoRect ={game->lagarto.x,game->lagarto.y,14,32};
     SDL_RenderCopy(renderer,game->lagarto.lagartoImagen,NULL,&lagartoRect);
 
+    SDL_Rect frutasRect ={game->frutas[1].x,game->frutas[1].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[1].frutasImagen,NULL,&frutasRect);
+
     for(int i =0; i<7; i++) {
         SDL_Rect lianaRect = {game->liana[i].x, game->liana[i].y, 6, 120};
         SDL_RenderCopy(renderer, game->liana[i].lianaImagen, NULL, &lianaRect);
@@ -112,6 +115,7 @@ void loadGame(GameState *game) {
     SDL_Surface *lianaImageSurface=NULL;
     SDL_Surface *kongImageSurface=NULL;
     SDL_Surface *lagartoImageSurface=NULL;
+    SDL_Surface *frutasImageSurface=NULL;
 
 
 
@@ -121,7 +125,7 @@ void loadGame(GameState *game) {
     lianaImageSurface =IMG_Load("liana.png");
     kongImageSurface =IMG_Load("kong.png");
     lagartoImageSurface =IMG_Load("lagarto.png");
-
+    frutasImageSurface = IMG_Load("banana.png");
 
     if(donkeyImageSurface ==NULL){
         printf("No se encontro la ruta de la imagen de Donkey.png! \n\n");
@@ -175,8 +179,13 @@ void loadGame(GameState *game) {
     game->kong.x=0;
     game->kong.y=55;
 
+    game->frutas[1].x=110;
+    game->frutas[1].y=55;
+
     game->donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
     game->kong.kongImagen =SDL_CreateTextureFromSurface(game->renderer,kongImageSurface);
+
+    game->frutas[1].frutasImagen = SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
 
     game->lagarto.lagartoImagen = SDL_CreateTextureFromSurface(game->renderer,lagartoImageSurface);
 
@@ -207,5 +216,6 @@ void loadGame(GameState *game) {
     SDL_FreeSurface(lianaImageSurface);
     SDL_FreeSurface(kongImageSurface);
     SDL_FreeSurface(lagartoImageSurface);
+    SDL_FreeSurface(frutasImageSurface);
 
 }
