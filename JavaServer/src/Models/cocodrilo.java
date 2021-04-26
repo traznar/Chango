@@ -6,14 +6,14 @@ public class cocodrilo extends ObjetosJuego{
 	
 	public boolean direccionX;
 	public boolean direccionY;
-	public String type;
+	public int type;
 	
-	public cocodrilo(String nombre,int posicionX,int posicionY,int size){
+	public cocodrilo(int nombre,int posicionX,int posicionY,int size){
 		super(posicionX,posicionY,size);
 		this.type=nombre;
 		this.direccionX=false;
 		this.direccionY=false;
-		definirTypo(nombre);
+		//definirTypo(nombre);
 	}
 	public void definirTypo(String nombre){
 		if(nombre.equals("rojo")){
@@ -36,8 +36,12 @@ public class cocodrilo extends ObjetosJuego{
 	}
 	@Override
 	public JSONObject toJsonObj() {
-		// TODO Auto-generated method stub
-		return null;
+		JSONObject obj = new JSONObject();
+		obj.put("posX", posX);
+		obj.put("posY", posY);
+		obj.put("type", type);
+		obj.put("size", size);
+		return obj;
 	}
 	
 }

@@ -72,7 +72,6 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_RenderCopy(renderer,game->plataformas[2].plataformaImagen,NULL,&plataformaRect3);
     SDL_Rect plataformaRect4 ={game->plataformas[3].x,game->plataformas[3].y,140,20};
     SDL_RenderCopy(renderer,game->plataformas[3].plataformaImagen,NULL,&plataformaRect4);
-
     SDL_Rect plataformaRect5 ={game->plataformas[4].x,game->plataformas[4].y,320,20};
     SDL_RenderCopy(renderer,game->plataformas[4].plataformaImagen,NULL,&plataformaRect5);
     SDL_Rect plataformaRect6 ={game->plataformas[5].x,game->plataformas[5].y,240,20};
@@ -80,11 +79,43 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect plataformaRect7 ={game->plataformas[6].x,game->plataformas[6].y,240,20};
     SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);
 
-    SDL_Rect lagartoRect ={game->lagarto.x,game->lagarto.y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto.lagartoImagen,NULL,&lagartoRect);
+    SDL_Rect lagartoRect ={game->lagarto[0].x,game->lagarto[0].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[0].lagartoImagen,NULL,&lagartoRect);
+    SDL_Rect lagartoRect1 ={game->lagarto[1].x,game->lagarto[1].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[1].lagartoImagen,NULL,&lagartoRect1);
+    SDL_Rect lagartoRect2 ={game->lagarto[2].x,game->lagarto[2].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[2].lagartoImagen,NULL,&lagartoRect2);
+    SDL_Rect lagartoRect3 ={game->lagarto[3].x,game->lagarto[3].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[3].lagartoImagen,NULL,&lagartoRect3);
+    SDL_Rect lagartoRect4 ={game->lagarto[4].x,game->lagarto[4].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[4].lagartoImagen,NULL,&lagartoRect4);
+    SDL_Rect lagartoRect5 ={game->lagarto[5].x,game->lagarto[5].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[5].lagartoImagen,NULL,&lagartoRect5);
+    SDL_Rect lagartoRect6 ={game->lagarto[6].x,game->lagarto[6].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[6].lagartoImagen,NULL,&lagartoRect6);
+    SDL_Rect lagartoRect7 ={game->lagarto[7].x,game->lagarto[7].y,14,32};
+    SDL_RenderCopy(renderer,game->lagarto[7].lagartoImagen,NULL,&lagartoRect7);
 
-    SDL_Rect frutasRect ={game->frutas[1].x,game->frutas[1].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[1].frutasImagen,NULL,&frutasRect);
+
+    SDL_Rect frutasRect ={game->frutas[0].x,game->frutas[0].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[0].frutasImagen,NULL,&frutasRect);
+    SDL_Rect frutasRect1 ={game->frutas[1].x,game->frutas[1].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[1].frutasImagen,NULL,&frutasRect1);
+    SDL_Rect frutasRect2 ={game->frutas[2].x,game->frutas[2].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[2].frutasImagen,NULL,&frutasRect2);
+    SDL_Rect frutasRect3 ={game->frutas[3].x,game->frutas[3].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[3].frutasImagen,NULL,&frutasRect3);
+    SDL_Rect frutasRect4 ={game->frutas[4].x,game->frutas[4].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[4].frutasImagen,NULL,&frutasRect4);
+    SDL_Rect frutasRect5 ={game->frutas[5].x,game->frutas[5].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[5].frutasImagen,NULL,&frutasRect5);
+    SDL_Rect frutasRect6 ={game->frutas[6].x,game->frutas[6].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[6].frutasImagen,NULL,&frutasRect6);
+    SDL_Rect frutasRect7 ={game->frutas[7].x,game->frutas[7].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[7].frutasImagen,NULL,&frutasRect7);
+    SDL_Rect frutasRect8 ={game->frutas[8].x,game->frutas[8].y,16,16};
+    SDL_RenderCopy(renderer,game->frutas[8].frutasImagen,NULL,&frutasRect8);
+
 
     for(int i =0; i<7; i++) {
         SDL_Rect lianaRect = {game->liana[i].x, game->liana[i].y, 6, 120};
@@ -122,31 +153,32 @@ void cargarPlataforma(GameState *game, int i, int posX, int posY) {
     game->plataformas[i].x= posX;
     game->plataformas[i].y= posY;
     game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
-
-
-
-
-
-   // SDL_FreeSurface(plataformaImageSurface);
-
-
+    SDL_FreeSurface(plataformaImageSurface);
 }
 
 
-void crearCocodrilos(int posX, int posY) {
+void crearCocodrilosAzules(GameState  *game,int i ,int posX, int posY,int type) {
+    SDL_Surface *lagartoImageSurface=NULL;
+    if(type == 0){
+        lagartoImageSurface =IMG_Load("lagarto.png");
+    }else{
+        lagartoImageSurface =IMG_Load("lagartoRojo.png");
+    }
+    game->lagarto[i].x=posX;
+    game->lagarto[i].y=posY;
+    game->lagarto[i].lagartoImagen = SDL_CreateTextureFromSurface(game->renderer,lagartoImageSurface);
+    SDL_FreeSurface(lagartoImageSurface);
+}
+void crearLianas(GameState *game,int posX, int posY) {
 
 }
-
-
-
-void crearLianas(int posX, int posY) {
-
-}
-
-
-
-void crearFrutas(int posX, int posY) {
-
+void crearFrutas(GameState *game,int posX, int posY,int i) {
+    SDL_Surface *frutasImageSurface=NULL;
+    frutasImageSurface =IMG_Load("banana.png");
+    game->frutas[i].x=posX;
+    game->frutas[i].y=posY;
+    game->frutas[i].frutasImagen= SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
+    SDL_FreeSurface(frutasImageSurface);
 }
 
 void loadGame(GameState *game) {
@@ -155,8 +187,8 @@ void loadGame(GameState *game) {
     SDL_Surface *aguaImageSurface=NULL;
     SDL_Surface *lianaImageSurface=NULL;
     SDL_Surface *kongImageSurface=NULL;
-    SDL_Surface *lagartoImageSurface=NULL;
-    SDL_Surface *frutasImageSurface=NULL;
+  //  SDL_Surface *lagartoImageSurface=NULL;
+  //  SDL_Surface *frutasImageSurface=NULL;
 
 
 
@@ -165,8 +197,8 @@ void loadGame(GameState *game) {
     aguaImageSurface =IMG_Load("agua.png");
     lianaImageSurface =IMG_Load("liana.png");
     kongImageSurface =IMG_Load("kong.png");
-    lagartoImageSurface =IMG_Load("lagarto.png");
-    frutasImageSurface = IMG_Load("banana.png");
+   // lagartoImageSurface =IMG_Load("lagarto.png");
+  //  frutasImageSurface = IMG_Load("banana.png");
 
     if(donkeyImageSurface ==NULL){
         printf("No se encontro la ruta de la imagen de Donkey.png! \n\n");
@@ -213,22 +245,22 @@ void loadGame(GameState *game) {
 
     game->agua.x=150;
     game->agua.y=605;
-
-    game->lagarto.x=150;
-    game->lagarto.y=150;
-
+/*
+    game->lagarto[0].x=150;
+    game->lagarto[0].y=150;
+*/
     game->kong.x=0;
     game->kong.y=55;
-
+/*
     game->frutas[1].x=110;
     game->frutas[1].y=55;
-
+*/
     game->donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
     game->kong.kongImagen =SDL_CreateTextureFromSurface(game->renderer,kongImageSurface);
 
-    game->frutas[1].frutasImagen = SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
+   // game->frutas[1].frutasImagen = SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
 
-    game->lagarto.lagartoImagen = SDL_CreateTextureFromSurface(game->renderer,lagartoImageSurface);
+  //  game->lagarto[0].lagartoImagen = SDL_CreateTextureFromSurface(game->renderer,lagartoImageSurface);
 
     for(int i =0; i<7; i++){
         game->liana[i].x= game->plataformas[i].x+20;
@@ -256,7 +288,7 @@ void loadGame(GameState *game) {
     SDL_FreeSurface(aguaImageSurface);
     SDL_FreeSurface(lianaImageSurface);
     SDL_FreeSurface(kongImageSurface);
-    SDL_FreeSurface(lagartoImageSurface);
-    SDL_FreeSurface(frutasImageSurface);
+   // SDL_FreeSurface(lagartoImageSurface);
+   // SDL_FreeSurface(frutasImageSurface);
 
 }

@@ -36,10 +36,10 @@ public class GameData {
 		frutasObj.add(new Fruta(200,100,1,100));
 		frutasObj.add(new Fruta(100,200,1,100));
 		
-		cocodrilosObj.add(new cocodrilo("a",10,200,1));
-		cocodrilosObj.add(new cocodrilo("a",70,300,1));
-		cocodrilosObj.add(new cocodrilo("r",300,200,1));
-		cocodrilosObj.add(new cocodrilo("r",100,700,1));
+		cocodrilosObj.add(new cocodrilo(0,10,200,1));//azul 0 y rojo 1
+		cocodrilosObj.add(new cocodrilo(0,70,300,1));
+		cocodrilosObj.add(new cocodrilo(1,300,200,1));
+		cocodrilosObj.add(new cocodrilo(1,100,700,1));
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -56,10 +56,10 @@ public class GameData {
 				lianasj.add(lianasObj.get(i).toJsonString());
 			
 			for(int i =0;i<frutasObj.size();i++) 
-				frutasj.add(frutasObj.get(i).toJsonString());
+				frutasj.add(frutasObj.get(i).toJsonObj());
 			
 			for(int i =0;i<cocodrilosObj.size();i++) 
-				cocodrilosj.add(cocodrilosObj.get(i).toJsonString());
+				cocodrilosj.add(cocodrilosObj.get(i).toJsonObj());
 			
 			for(int i =0;i<plataformasObj.size();i++) 
 				plataformasj.add(plataformasObj.get(i).toJsonObj());
