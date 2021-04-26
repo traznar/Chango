@@ -46,7 +46,7 @@ typedef struct {
     SDL_Renderer *renderer;
     SDL_Texture *label;
     SDL_Texture *labelvidas;
-    Lagarto lagarto;
+    Lagarto lagarto[20];
     Frutas frutas[100];
 
     TTF_Font *font;
@@ -57,9 +57,9 @@ void loadGame(GameState *game);
 void doRender(SDL_Renderer *renderer, GameState *game);
 void showScore(GameState *game);
 //void crearPlataforma(int posX, int posY, GameState *game, int i);
-void crearCocodrilos(int posX, int posY);
-void crearLianas(int posX, int posY);
-void crearFrutas(int posX, int posY);
+void crearCocodrilosAzules(GameState *game,int i,int posX, int posY,int type);
+void crearLianas(GameState *game,int posX, int posY);
+void crearFrutas(GameState *game,int posX, int posY,int i);
 void cargarPlataforma(GameState *game,int i,int posX, int posY);
 
 #endif //DONKEYC_GRAPHICS_H

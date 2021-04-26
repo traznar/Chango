@@ -50,7 +50,6 @@ void lagartosUpdater(int posX, int posY){
     printf(" Posicion en Y de lagartos : ");
     printf("%i",posY );
 
-
 }
 void frutasUpdater(int posX, int posY){
 
@@ -171,7 +170,52 @@ bool makeRequest(bool printState,char* message){
         cargarPlataforma(&gameState,i,posX,posY);
        // crearPlataforma(posX,posY,&gameState,i);
 
+
     }
+    //Creacion de cocodrilos
+    cJSON *arrayCoco = cJSON_Parse(getStringFromJson(Json, "cocodrilos"));
+    int numero = cJSON_GetArraySize(arrayCoco);
+
+    for (int i = 0; i < numero; i++) {
+        cJSON *elemto;
+        elemto = cJSON_GetArrayItem(arrayCoco, i);
+        char* texto=cJSON_Print(elemto);
+        printf(texto);
+        int posX=getNumberFromJson(texto,"posX");
+        int posY=getNumberFromJson(texto,"posY");
+        int type =getNumberFromJson(texto,"type");
+        crearCocodrilosAzules(&gameState,i,posX,posY,type);
+
+    }
+    cJSON *arrayLianas = cJSON_Parse(getStringFromJson(Json, "lianas"));
+    int numLianas = cJSON_GetArraySize(arrayLianas);
+
+    for (int i = 0; i < numLianas; i++) {
+        cJSON *elemto;
+        elemto = cJSON_GetArrayItem(arrayLianas, i);
+        char* texto=cJSON_Print(elemto);
+        printf(texto);
+       // int posX=getNumberFromJson(texto,"posX");
+       // int posY=getNumberFromJson(texto,"posY");
+       // int type =getNumberFromJson(texto,"type");
+    }
+    cJSON *arrayFrutas = cJSON_Parse(getStringFromJson(Json, "frutas"));
+    int numfrutas = cJSON_GetArraySize(arrayFrutas);
+
+    for (int i = 0; i < numfrutas; i++) {
+        cJSON *elemto;
+        elemto = cJSON_GetArrayItem(arrayFrutas, i);
+        char* texto=cJSON_Print(elemto);
+        printf(texto);
+        int posX=getNumberFromJson(texto,"posX");
+        int posY=getNumberFromJson(texto,"posY");
+        crearFrutas(&gameState,posX,posY,i);
+        // int type =getNumberFromJson(texto,"type");
+
+
+    }
+    //Creacion de lianas
+
     closesocket(mySocket);
     return true;
 }
@@ -297,6 +341,7 @@ void* update(){
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);
     SDL_DestroyTexture(gameState.kong.kongImagen);
     SDL_DestroyTexture(gameState.frutas->frutasImagen);
+
     destroyLabel(&gameState);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);

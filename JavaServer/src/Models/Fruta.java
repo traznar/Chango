@@ -23,7 +23,12 @@ public class Fruta extends ObjetosJuego{
 	}
 	@Override
 	public JSONObject toJsonObj() {
-		// TODO Auto-generated method stub
-		return null;
+		JSONObject obj = new JSONObject();
+		obj.put("posX", posX);
+		obj.put("posY", posY);
+		obj.put("puntos",puntos);
+		obj.put("size", size);
+		return obj;
+	
 	}
 }
