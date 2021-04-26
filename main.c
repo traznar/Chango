@@ -84,7 +84,7 @@ bool makeRequest(bool printState,char* message){
 
 
     //ANALIZO SI RECIBO UNA RESPUESTA DEL SERVIDOR, LUEGO CIERRO-------------------------------------------------->
-    if((state=recv(mySocket , server_reply , 400 , 0)) == SOCKET_ERROR){//guarda la respuesta en server_reply[state]
+    if((state=recv(mySocket , server_reply , 6000 , 0)) == SOCKET_ERROR){//guarda la respuesta en server_reply[state]
         printf("!!: No se recibio respuesta \n!!: Error %i",state);
         return false;
     }

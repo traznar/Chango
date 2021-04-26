@@ -26,7 +26,7 @@ public class GameData {
 		frutasObj=new  lista<Fruta>();
 		dkMario = new DKMario(0,55,1);
 		
-		/*plataformasObj.add(new ZonaDetectable(0,605,150,false));
+		plataformasObj.add(new ZonaDetectable(0,605,150,false));
 		plataformasObj.add(new ZonaDetectable(500,500,150,false));
 		plataformasObj.add(new ZonaDetectable(300,300,150,false));
 		plataformasObj.add(new ZonaDetectable(0,100,150,false));
@@ -39,7 +39,7 @@ public class GameData {
 		cocodrilosObj.add(new cocodrilo("a",10,200,1));
 		cocodrilosObj.add(new cocodrilo("a",70,300,1));
 		cocodrilosObj.add(new cocodrilo("r",300,200,1));
-		cocodrilosObj.add(new cocodrilo("r",100,700,1));*/
+		cocodrilosObj.add(new cocodrilo("r",100,700,1));
 	}
 	
 	@SuppressWarnings("unchecked")
