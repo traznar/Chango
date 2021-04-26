@@ -4,16 +4,14 @@
 #include<winsock2.h>
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 #include <pthread.h>
-
 #include "usleep.h"
-
 #include "graphics.h"
 #include "cJSON.h"
 #include "cJSON.c"
 
 #define MAX_FPS 20
-#define IP "192.168.0.6"
-//#define IP "192.168.18.27"
+//#define IP "192.168.0.6"
+#define IP "192.168.18.27"
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -32,14 +30,11 @@ double getNumberFromJson(char *json, char *key ){
 }
 void donkeyKongJrUpdater(int posX, int posY,int vidas){
     SDL_Color white= {255,255,255,255};
-    printf(" Posicion en X de donkeyJR : ");
-    printf("%i",posX);
-    printf(" Posicion en Y de donkeyJR : ");
-    printf("%i",posY);
-    printf(" Vidas de donkeyJR : ");
-    printf("%i",vidas);
+
     sprintf(str1,"%d",vidas);
     SDL_Surface *tmp2 = TTF_RenderText_Blended(gameState.font, strcat(str1," <-Vidas") , white);
+    gameState.donkeyJr.x=posX;
+    gameState.donkeyJr.y=posY;
     gameState.labelvidas =SDL_CreateTextureFromSurface(gameState.renderer, tmp2);
     SDL_FreeSurface(tmp2);
 
@@ -123,26 +118,9 @@ bool makeRequest(bool printState,char* message){
     int donkeyposX=getNumberFromJson(donkeyData, "posX");
     int donkeyposY=getNumberFromJson(donkeyData, "posY");
     int vidas=getNumberFromJson(donkeyData, "vidas");
-
-    //char *lagartosData=getStringFromJson(Json, "cocodrilos");
-    //printf("\n");
-    //printf("===========================================>");
-   // printf("%s", lagartosData);
-   // char* data2= getStringFromJson(lagartosData,"posX");
-    //int lagartoX=getNumberFromJson(lagartosData, "posX");
-    //int lagartoY=getNumberFromJson(lagartosData, "posY");
-
-    //printf(data2);
     donkeyKongJrUpdater(donkeyposX,donkeyposY,vidas);
-    //lagartosUpdater(lagartoX,lagartoY);
-    /**
-    printf(Json);
-    printf("\n\n\n");
-    printf(dataDelJugador);
-    printf("\n\n\n");
-    printf("%i",valorQueQueremosSacar );
-    printf("\n\n\n");
-    */
+
+
     //===============================Ejemplo de Arrays===========================>
     /*printf("\n\n\n");
     cJSON *array = cJSON_Parse(getStringFromJson(Json, "plataformas"));
@@ -154,7 +132,6 @@ bool makeRequest(bool printState,char* message){
         printf(text);
     }*/
     //===============================Ejemplo de Arrays===========================>
-    //Llamando a creacion de plataformas
     printf("\n\n\n");
     cJSON *arrayPlat = cJSON_Parse(getStringFromJson(Json, "plataformas"));
     int num = cJSON_GetArraySize(arrayPlat);
@@ -163,12 +140,10 @@ bool makeRequest(bool printState,char* message){
         cJSON *elemt;
         elemt = cJSON_GetArrayItem(arrayPlat, i);
         char* text=cJSON_Print(elemt);
-        printf(text);
         int posX=getNumberFromJson(text,"posX");
         int posY=getNumberFromJson(text,"posY");
 
         cargarPlataforma(&gameState,i,posX,posY);
-       // crearPlataforma(posX,posY,&gameState,i);
 
 
     }
@@ -180,7 +155,6 @@ bool makeRequest(bool printState,char* message){
         cJSON *elemto;
         elemto = cJSON_GetArrayItem(arrayCoco, i);
         char* texto=cJSON_Print(elemto);
-        printf(texto);
         int posX=getNumberFromJson(texto,"posX");
         int posY=getNumberFromJson(texto,"posY");
         int type =getNumberFromJson(texto,"type");
@@ -194,7 +168,6 @@ bool makeRequest(bool printState,char* message){
         cJSON *elemto;
         elemto = cJSON_GetArrayItem(arrayLianas, i);
         char* texto=cJSON_Print(elemto);
-        printf(texto);
        // int posX=getNumberFromJson(texto,"posX");
        // int posY=getNumberFromJson(texto,"posY");
        // int type =getNumberFromJson(texto,"type");
@@ -206,7 +179,6 @@ bool makeRequest(bool printState,char* message){
         cJSON *elemto;
         elemto = cJSON_GetArrayItem(arrayFrutas, i);
         char* texto=cJSON_Print(elemto);
-        printf(texto);
         int posX=getNumberFromJson(texto,"posX");
         int posY=getNumberFromJson(texto,"posY");
         crearFrutas(&gameState,posX,posY,i);
@@ -260,40 +232,31 @@ int processEvents(SDL_Window *window, GameState *game)
     const Uint8 *state =SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_A])
     {
-        if(0<game->donkeyJr.x) {
-            game->donkeyJr.x -= 10;
-        }
+
         char* left;
-        left="left\n\r";
+        left="left";
         makeRequest(FALSE, left);
     }
     if (state[SDL_SCANCODE_D])
     {
-        if(572>game->donkeyJr.x) {
 
-            game->donkeyJr.x += 10;
-        }
         char* right;
-        right="rigth\n\r";
+        right="rigth";
         makeRequest(FALSE, right);
 
     }
     if (state[SDL_SCANCODE_W])
     {
-        if(5<game->donkeyJr.y){
-            game->donkeyJr.y -= 10;
-        }
+
         char* up;
-        up="up\n\r";
+        up="up";
         makeRequest(FALSE, up);
     }
     if (state[SDL_SCANCODE_S])
     {
-        if(565>game->donkeyJr.y) {
-            game->donkeyJr.y += 10;
-        }
+
         char* down;
-        down="down\n\r";
+        down="down";
         makeRequest(FALSE, down);
 
     }

@@ -19,17 +19,18 @@ public class GameData {
 	
 	public GameData() {
 		gameState="initialize";
-		playerData= new PlayerData(12,555,1);
+		playerData= new PlayerData(12,555,48);
 		lianasObj= new  lista<ZonaDetectable>();
 		plataformasObj=new  lista<ZonaDetectable>();
 		cocodrilosObj=new  lista<cocodrilo>();
 		frutasObj=new  lista<Fruta>();
 		dkMario = new DKMario(0,55,1);
 		
+		plataformasObj.add(new ZonaDetectable(40,400,150,false));
 		plataformasObj.add(new ZonaDetectable(0,605,150,false));
 		plataformasObj.add(new ZonaDetectable(500,500,150,false));
 		plataformasObj.add(new ZonaDetectable(300,300,150,false));
-		plataformasObj.add(new ZonaDetectable(0,100,150,false));
+		plataformasObj.add(new ZonaDetectable(0,100,320,false));
 		plataformasObj.add(new ZonaDetectable(420,190,150,false));
 		
 		frutasObj.add(new Fruta(100,100,1,100));
@@ -79,6 +80,61 @@ public class GameData {
 			
 		return obj.toJSONString();
 		
+	}
+	public String getGameState() {
+		return gameState;
+	}
+
+	public void setGameState(String gameState) {
+		this.gameState = gameState;
+	}
+
+	public PlayerData getPlayerData() {
+		return playerData;
+	}
+
+	public void setPlayerData(PlayerData playerData) {
+		this.playerData = playerData;
+	}
+
+	public lista<ZonaDetectable> getLianasObj() {
+		return lianasObj;
+	}
+
+	public void setLianasObj(lista<ZonaDetectable> lianasObj) {
+		this.lianasObj = lianasObj;
+	}
+
+	public lista<Fruta> getFrutasObj() {
+		return frutasObj;
+	}
+
+	public void setFrutasObj(lista<Fruta> frutasObj) {
+		this.frutasObj = frutasObj;
+	}
+
+	public lista<cocodrilo> getCocodrilosObj() {
+		return cocodrilosObj;
+	}
+
+	public void setCocodrilosObj(lista<cocodrilo> cocodrilosObj) {
+		this.cocodrilosObj = cocodrilosObj;
+	}
+
+	public lista<ZonaDetectable> getPlataformasObj() {
+		return plataformasObj;
+	}
+
+	public void setPlataformasObj(lista<ZonaDetectable> plataformasObj) {
+		this.plataformasObj = plataformasObj;
+	}
+
+	public DKMario getDkMario() {
+		return dkMario;
+	}
+
+	public void setDkMario(DKMario dkMario) {
+		this.dkMario = dkMario;
 	}
 	
 }

@@ -17,6 +17,7 @@ public class Servidor {
     private ServerSocket serverSocket;
     private BufferedInputStream bis ;
     private DataInputStream dis ;
+    private GameStateController controller;
 
     public void print(String message) {
     	System.out.println(message + "\n");
@@ -27,7 +28,7 @@ public class Servidor {
         	
             ServerSocket servidor= new ServerSocket(port); //intenta hacer la conexion
             print("Server iniciado");
-            GameStateController controller=GameStateController.getInstance(); 
+            controller=GameStateController.getInstance(); 
         
 
             while (true) {
@@ -44,18 +45,32 @@ public class Servidor {
                 BufferedReader reader= new BufferedReader(streamReader);
                 
                 
-                puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());
-                
+                puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());  
                 String value= reader.readLine();
-                print("@ Mensaje del cliente: "+ value);
+                procesClientRequest(value);
+       
                 
-                //cierro el socket y el reader
+
                 reader.close();
                 puenteS.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void procesClientRequest(String request){
+    	int velocity= 10;
+    	
+        if(request.compareTo("up")==0)
+            	controller.moverMono(0, -velocity);        	
+        if(request.compareTo("down")==0)  
+        	controller.moverMono(0, velocity);
+        if(request.compareTo("left")==0)  
+        	controller.moverMono(-velocity, 0);
+        if(request.compareTo("rigth")==0)  
+        	controller.moverMono(velocity, 00);
+        	
     }
 
 }

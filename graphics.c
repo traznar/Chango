@@ -3,16 +3,10 @@
 //
 #include <stdio.h>
 #include <SDL.h>
-#include <stdbool.h>
 #include <SDL_image.h>
 #include <unistd.h>
 #include "graphics.h"
-#include <stdio.h>
-#include <SDL.h>
-#include <stdbool.h>
-#include <SDL_image.h>
-#include <unistd.h>
-#include "graphics.h"
+
 char str[100];
 char str1[100];
 

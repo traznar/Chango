@@ -3,8 +3,8 @@ package Models;
 import org.json.simple.JSONObject;
 
 public abstract class ObjetosJuego {
-	protected int posX;
-	protected int posY;
+	public int posX;
+	public int posY;
 	protected int size;
 	
 	
