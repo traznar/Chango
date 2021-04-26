@@ -16,14 +16,14 @@ void showScore(GameState *game) {
     SDL_Color white= {255,255,255,255};
     sprintf(str,"%d",game->donkeyJr.x);
     sprintf(str1,"%d",game->donkeyJr.y);
-
+/*
     SDL_Surface *tmp = TTF_RenderText_Blended(game->font, strcat(str," <-Puntaje") , white);
     game->label = SDL_CreateTextureFromSurface(game->renderer, tmp);
 
     //SDL_Surface *tmp2 = TTF_RenderText_Blended(game->font, strcat(str1," <-Vidas") , white);
     //game->labelvidas =SDL_CreateTextureFromSurface(game->renderer, tmp2);
 
-    SDL_FreeSurface(tmp);
+    SDL_FreeSurface(tmp);*/
     //SDL_FreeSurface(tmp2);
 }
 

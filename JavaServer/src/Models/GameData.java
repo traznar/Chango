@@ -33,9 +33,9 @@ public class GameData {
 		plataformasObj.add(new ZonaDetectable(0,100,320,false));
 		plataformasObj.add(new ZonaDetectable(420,190,150,false));
 		
-		frutasObj.add(new Fruta(100,100,1,100));
-		frutasObj.add(new Fruta(200,100,1,100));
-		frutasObj.add(new Fruta(100,200,1,100));
+		frutasObj.add(new Fruta(100,150,10,100));
+		frutasObj.add(new Fruta(200,550,10,100));
+		frutasObj.add(new Fruta(150,200,10,100));
 		
 		cocodrilosObj.add(new cocodrilo(0,10,200,1));//azul 0 y rojo 1
 		cocodrilosObj.add(new cocodrilo(0,70,300,1));

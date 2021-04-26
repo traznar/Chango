@@ -46,8 +46,8 @@ typedef struct {
     SDL_Renderer *renderer;
     SDL_Texture *label;
     SDL_Texture *labelvidas;
-    Lagarto lagarto[20];
-    Frutas frutas[100];
+    Lagarto lagarto[10];
+    Frutas frutas[10];
 
     TTF_Font *font;
 } GameState;

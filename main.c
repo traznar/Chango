@@ -16,7 +16,7 @@ static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
 static SDL_Renderer *renderer=NULL;
-char* str1[100];
+
 
 
 
@@ -28,8 +28,11 @@ char* getStringFromJson(char *json, char *key ){
 double getNumberFromJson(char *json, char *key ){
     return (cJSON_GetObjectItemCaseSensitive(cJSON_Parse(json), key)->valuedouble);
 }
-void donkeyKongJrUpdater(int posX, int posY,int vidas){
+void donkeyKongJrUpdater(int posX, int posY,int vidas,int puntaje){
     SDL_Color white= {255,255,255,255};
+
+    char* str1[10];
+    char* str [10];
 
     sprintf(str1,"%d",vidas);
     SDL_Surface *tmp2 = TTF_RenderText_Blended(gameState.font, strcat(str1," <-Vidas") , white);
@@ -37,6 +40,16 @@ void donkeyKongJrUpdater(int posX, int posY,int vidas){
     gameState.donkeyJr.y=posY;
     gameState.labelvidas =SDL_CreateTextureFromSurface(gameState.renderer, tmp2);
     SDL_FreeSurface(tmp2);
+
+    sprintf(str,"%d",puntaje);
+    SDL_Surface *tmp = TTF_RenderText_Blended(gameState.font, strcat(str," <-Puntaje") , white);
+    gameState.label = SDL_CreateTextureFromSurface(gameState.renderer, tmp);
+
+    //SDL_Surface *tmp2 = TTF_RenderText_Blended(game->font, strcat(str1," <-Vidas") , white);
+    //game->labelvidas =SDL_CreateTextureFromSurface(game->renderer, tmp2);
+
+    SDL_FreeSurface(tmp);
+
 
 }
 void lagartosUpdater(int posX, int posY){
@@ -118,7 +131,8 @@ bool makeRequest(bool printState,char* message){
     int donkeyposX=getNumberFromJson(donkeyData, "posX");
     int donkeyposY=getNumberFromJson(donkeyData, "posY");
     int vidas=getNumberFromJson(donkeyData, "vidas");
-    donkeyKongJrUpdater(donkeyposX,donkeyposY,vidas);
+    int puntaje=getNumberFromJson(donkeyData, "puntuacion");
+    donkeyKongJrUpdater(donkeyposX,donkeyposY,vidas,puntaje);
 
 
     //===============================Ejemplo de Arrays===========================>
@@ -173,6 +187,8 @@ bool makeRequest(bool printState,char* message){
        // int type =getNumberFromJson(texto,"type");
     }
     cJSON *arrayFrutas = cJSON_Parse(getStringFromJson(Json, "frutas"));
+
+    memset( gameState.frutas, NULL , sizeof( 10 ) );
     int numfrutas = cJSON_GetArraySize(arrayFrutas);
 
     for (int i = 0; i < numfrutas; i++) {
@@ -181,11 +197,13 @@ bool makeRequest(bool printState,char* message){
         char* texto=cJSON_Print(elemto);
         int posX=getNumberFromJson(texto,"posX");
         int posY=getNumberFromJson(texto,"posY");
+
         crearFrutas(&gameState,posX,posY,i);
         // int type =getNumberFromJson(texto,"type");
 
 
     }
+
     //Creacion de lianas
 
     closesocket(mySocket);

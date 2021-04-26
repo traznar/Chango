@@ -4,6 +4,7 @@ package Code;
 import Models.PlayerData;
 import Models.ZonaDetectable;
 import estructurasDatos.lista;
+import Models.Fruta;
 import Models.GameData;
 
 public class GameStateController {
@@ -30,13 +31,44 @@ public class GameStateController {
 	
 	public  void moverMono(int x, int y) {
 		PlayerData data=gameData.getPlayerData();
-		
+		int size=data.getSize();
 		int newX=data.posX+x;
 		int newY=data.posY+y;
 		
-		if((newX>0 & newX<572 & newY >5 & newY < 565) && verifyrPlatformColl(newX,newY,data.getSize())) {
+		if((newX>0 & newX<572 & newY >5 & newY < 565) && verifyrPlatformColl(newX,newY,size)) {
 			data.posX=newX;
 			data.posY=newY;
+			verifyFruitsColl(newX,newY,size);
+		}
+		
+	}
+	
+	public void verifyFruitsColl(int newX, int newY,int size) {
+		lista<Fruta> frutas=gameData.getFrutasObj();
+	
+		
+		for(int i=0; i< frutas.size(); i++) {
+			Fruta frutilla=frutas.get(i);
+			int pX=frutilla.posX;
+			int pY=frutilla.posY;
+			int l =frutilla.getSize();
+
+		    float h=15;
+		    
+	
+					
+			if(((newX+size)<=pX || (newX>=(pX+l))) )
+				continue;
+			else {
+				if(((newY>=(pY+h))||(newY+size-h)<=pY)) 
+					continue;
+				else{
+					
+					frutilla.posX=1000000;
+					gameData.setFrutasObj(frutas);
+					gameData.getPlayerData().puntuacion+=frutilla.getPuntos();
+					}	
+				}
 		}
 		
 	}
@@ -47,17 +79,14 @@ public class GameStateController {
 		
 
 		for(int i=0; i< plataformas.size(); i++) {
-			
 			ZonaDetectable plataforma=plataformas.get(i);
 			int pX=plataforma.posX;
 			int pY=plataforma.posY;
 			int l =plataforma.getSize();
-		    float tolerance=0.5f;
 		    float h=15;
 		    
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
-			
 			else {
 				if(((newY>=(pY+h))||(newY+size-h)<=pY)) 
 					continue;

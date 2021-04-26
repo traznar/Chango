@@ -34,7 +34,7 @@ public class Servidor {
             while (true) {
                 Socket puenteS = servidor.accept();
                 if(puenteS.getInetAddress()!=null){
-                	print("Cliente nuevo!");
+                	
                     InetAddress location=  puenteS.getInetAddress();
                     String IpRemota = location.getHostAddress();
                 }
@@ -43,6 +43,12 @@ public class Servidor {
                 
                 InputStreamReader streamReader= new InputStreamReader(puenteS.getInputStream());
                 BufferedReader reader= new BufferedReader(streamReader);
+                
+                print("===================================>");
+                for(int i=0;i<controller.gameData.getFrutasObj().size();i++) {
+                	print((controller.gameData.getFrutasObj().get(i).toJsonString()+ "\n"));
+                }
+                
                 
                 
                 puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());  
