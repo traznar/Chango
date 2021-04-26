@@ -12,8 +12,8 @@
 #include "cJSON.c"
 
 #define MAX_FPS 20
-#define IP "192.168.0.6"
-//#define IP "192.168.18.27"
+//#define IP "192.168.0.6"
+#define IP "192.168.18.27"
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -22,44 +22,20 @@ static SDL_Renderer *renderer=NULL;
 
 
 
+
+
+char* getStringFromJson(char *json, char *key ){
+    return (cJSON_GetObjectItemCaseSensitive(cJSON_Parse(json), key)->valuestring);
+}
+double getNumberFromJson(char *json, char *key ){
+    return (cJSON_GetObjectItemCaseSensitive(cJSON_Parse(json), key)->valuedouble);
+}
+
 /**
  * @def makeRequest realiza una peticion al servidor, el cual le respondera con un Json
  * @param printState : este parametro indica si queremos que se impriman los estados
  * @return  bool : en caso que la peticion fracase, se retorna un false
  */
-
-
-
-int supports_full_hd(const char * const monitor)
-{
-    const cJSON *DK = NULL;
-    const cJSON *playerData = NULL;
-    const cJSON *frutas = NULL;
-    int status = 0;
-    cJSON *monitor_json = cJSON_Parse(monitor);
-    if (monitor_json == NULL)
-    {
-        const char *error_ptr = cJSON_GetErrorPtr();
-        if (error_ptr != NULL)
-        {
-            fprintf(stderr, "Error before: %s\n", error_ptr);
-        }
-        status = 0;
-        goto end;
-    }
-
-    frutas = cJSON_GetObjectItemCaseSensitive(monitor_json, "frutas");
-
-    playerData = cJSON_GetObjectItemCaseSensitive(monitor_json, "playerData");
-    printf(playerData->valuestring);
-
-    end:
-    cJSON_Delete(monitor_json);
-    return status;
-}
-
-
-
 bool makeRequest(bool printState,char* message){
     int state;
     WSADATA wsa;
@@ -114,11 +90,12 @@ bool makeRequest(bool printState,char* message){
     }
     server_reply[state]='\0';
    // if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
-    const cJSON* string1= cJSON_Parse(server_reply);
     char *string = NULL;
-    string = cJSON_Print(string1);
-    printf(string);
-    supports_full_hd(string);
+    string = cJSON_Print(cJSON_Parse(server_reply));
+
+
+    printf("%i",(int) getNumberFromJson(getStringFromJson(string, "playerData"), "vidas"));
+
     closesocket(mySocket);
     return true;
 }
