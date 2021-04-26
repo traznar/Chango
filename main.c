@@ -8,6 +8,8 @@
 #include "usleep.h"
 
 #include "graphics.h"
+#include "cJSON.h"
+#include "cJSON.c"
 
 #define MAX_FPS 20
 #define IP "192.168.0.6"
@@ -25,6 +27,36 @@ static SDL_Renderer *renderer=NULL;
  * @param printState : este parametro indica si queremos que se impriman los estados
  * @return  bool : en caso que la peticion fracase, se retorna un false
  */
+
+
+
+int supports_full_hd(const char * const monitor)
+{
+    const cJSON *DK = NULL;
+    const cJSON *playerData = NULL;
+    const cJSON *frutas = NULL;
+    int status = 0;
+    cJSON *monitor_json = cJSON_Parse(monitor);
+    if (monitor_json == NULL)
+    {
+        const char *error_ptr = cJSON_GetErrorPtr();
+        if (error_ptr != NULL)
+        {
+            fprintf(stderr, "Error before: %s\n", error_ptr);
+        }
+        status = 0;
+        goto end;
+    }
+
+    frutas = cJSON_GetObjectItemCaseSensitive(monitor_json, "frutas");
+
+    playerData = cJSON_GetObjectItemCaseSensitive(monitor_json, "playerData");
+    printf(playerData->valuestring);
+
+    end:
+    cJSON_Delete(monitor_json);
+    return status;
+}
 
 
 
@@ -81,18 +113,19 @@ bool makeRequest(bool printState,char* message){
         return false;
     }
     server_reply[state]='\0';
-    if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
+   // if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
+    const cJSON* string1= cJSON_Parse(server_reply);
+    char *string = NULL;
+    string = cJSON_Print(string1);
+    printf(string);
+    supports_full_hd(string);
     closesocket(mySocket);
     return true;
-
 }
 
 bool initClient(){
     return makeRequest(true,"request\n\r");
 }
-
-
-
 
 int processEvents(SDL_Window *window, GameState *game)
 {
@@ -206,14 +239,13 @@ void* update(){
 
 
 
-
 int main(int argc, char* args[]){
-    //MENSAJE DE INICIO
+    //MENSAJE DE INI
 
     bool connect= initClient();
     //CONEXION POSTERIOR
-   if(connect){
 
+   if(connect){
         pthread_t thread_Update;
         pthread_create(&thread_Update, NULL, update, NULL);
         pthread_join(thread_Update, NULL);

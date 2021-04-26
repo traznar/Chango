@@ -44,7 +44,7 @@ public class Servidor {
                 BufferedReader reader= new BufferedReader(streamReader);
                 
                 
-                puenteS.getOutputStream().write((controller.getGameData().replace("\\", "")+"\n").getBytes());
+                puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());
                 
                 String value= reader.readLine();
                 print("@ Mensaje del cliente: "+ value);
