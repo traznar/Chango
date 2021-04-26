@@ -30,6 +30,23 @@ char* getStringFromJson(char *json, char *key ){
 double getNumberFromJson(char *json, char *key ){
     return (cJSON_GetObjectItemCaseSensitive(cJSON_Parse(json), key)->valuedouble);
 }
+void donkeyKongJrUpdater(int posX, int posY){
+    printf(" Posicion en X de donkeyJR : ");
+    printf("%i",posX );
+    printf(" Posicion en Y de donkeyJR : ");
+    printf("%i",posY );
+
+}
+void lagartosUpdater(int posX, int posY){
+    printf(" Posicion en X de lagartos : ");
+    printf("%i",posX );
+    printf(" Posicion en Y de lagartos : ");
+    printf("%i",posY );
+
+}
+void frutasUpdater(int posX, int posY){
+
+}
 
 /**
  * @def makeRequest realiza una peticion al servidor, el cual le respondera con un Json
@@ -94,6 +111,24 @@ bool makeRequest(bool printState,char* message){
     char *Json = cJSON_Print(cJSON_Parse(server_reply));
     char *dataDelJugador=getStringFromJson(Json, "playerData");
     int valorQueQueremosSacar=getNumberFromJson(dataDelJugador, "size");
+
+    char *donkeyData=getStringFromJson(Json, "DK");
+    int donkeyposX=getNumberFromJson(donkeyData, "posX");
+    int donkeyposY=getNumberFromJson(donkeyData, "posY");
+
+
+    char *lagartosData=getStringFromJson(Json, "cocodrilos");
+    //printf("\n");
+    //printf("===========================================>");
+   // printf("%s", lagartosData);
+   // char* data2= getStringFromJson(lagartosData,"posX");
+    //int lagartoX=getNumberFromJson(lagartosData, "posX");
+    //int lagartoY=getNumberFromJson(lagartosData, "posY");
+
+    //printf(data2);
+    donkeyKongJrUpdater(donkeyposX,donkeyposY);
+    //lagartosUpdater(lagartoX,lagartoY);
+
     printf(Json);
     printf("\n\n\n");
     printf(dataDelJugador);
@@ -109,6 +144,9 @@ bool makeRequest(bool printState,char* message){
 bool initClient(){
     return makeRequest(true,"request\n\r");
 }
+
+
+
 
 int processEvents(SDL_Window *window, GameState *game)
 {
@@ -159,6 +197,7 @@ int processEvents(SDL_Window *window, GameState *game)
         char* right;
         right="rigth\n\r";
         makeRequest(FALSE, right);
+
     }
     if (state[SDL_SCANCODE_W])
     {
