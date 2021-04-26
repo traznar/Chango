@@ -13,7 +13,7 @@ public class PlayerData extends ObjetosJuego{
 		this.puntuacion=0;
 		this.vidas=3;
 	}
-	public String toJson() {
+	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
@@ -24,5 +24,10 @@ public class PlayerData extends ObjetosJuego{
 		
 		return obj.toJSONString();
 
+	}
+	@Override
+	public JSONObject toJsonObj() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

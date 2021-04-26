@@ -8,12 +8,17 @@ public class DKMario extends ObjetosJuego{
 		super(posiX,posiY,size);
 	}
 	@Override
-	public String toJson() {
+	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
 
 		obj.put("animation", animation);
 		return obj.toJSONString();
+	}
+	@Override
+	public JSONObject toJsonObj() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -128,15 +128,25 @@ bool makeRequest(bool printState,char* message){
     //printf(data2);
     donkeyKongJrUpdater(donkeyposX,donkeyposY);
     //lagartosUpdater(lagartoX,lagartoY);
-
+    /**
     printf(Json);
     printf("\n\n\n");
     printf(dataDelJugador);
     printf("\n\n\n");
     printf("%i",valorQueQueremosSacar );
     printf("\n\n\n");
-
-
+    */
+    //===============================Ejemplo de Arrays===========================>
+    printf("\n\n\n");
+    cJSON *array = cJSON_Parse(getStringFromJson(Json, "plataformas"));
+    int n = cJSON_GetArraySize(array);
+    for (int i = 0; i < n; i++) {
+        cJSON *elem;
+        elem = cJSON_GetArrayItem(array, i);
+        char* text=cJSON_Print(elem);
+        printf(text);
+    }
+    //===============================Ejemplo de Arrays===========================>
     closesocket(mySocket);
     return true;
 }

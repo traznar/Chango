@@ -1,3 +1,3 @@
-C:/Users/Brandon/Desktop/BasuraProyecto/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir
-C:/Users/Brandon/Desktop/BasuraProyecto/Chango/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Brandon/Desktop/BasuraProyecto/Chango/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir
+C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/rebuild_cache.dir

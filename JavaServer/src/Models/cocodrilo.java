@@ -24,7 +24,7 @@ public class cocodrilo extends ObjetosJuego{
 	}
 
 	@Override
-	public String toJson() {
+	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
@@ -33,6 +33,11 @@ public class cocodrilo extends ObjetosJuego{
 		obj.put("direccionY", direccionY);
 		
 		return obj.toJSONString();
+	}
+	@Override
+	public JSONObject toJsonObj() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

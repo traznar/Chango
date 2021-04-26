@@ -13,7 +13,7 @@ public class ZonaDetectable extends ObjetosJuego{
 		
 		this.interactuable=interactuable;
 	}
-	public String toJson() {
+	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
@@ -21,4 +21,12 @@ public class ZonaDetectable extends ObjetosJuego{
 		obj.put("interactuable", interactuable);
 		return obj.toJSONString();
 	}
+	@Override
+	public JSONObject toJsonObj() {
+		JSONObject obj = new JSONObject();
+		obj.put("posX", posX);
+		obj.put("posY", posY);
+		return obj;
+	}
+
 }

@@ -1,5 +1,7 @@
 package Models;
 
+import org.json.simple.JSONObject;
+
 public abstract class ObjetosJuego {
 	protected int posX;
 	protected int posY;
@@ -40,5 +42,6 @@ public abstract class ObjetosJuego {
 	public int getPosiTotalY(){
 		return (posY+size);
 	}	
-	public abstract String toJson(); 
+	public abstract String toJsonString(); 
+	public abstract JSONObject toJsonObj(); 
 }

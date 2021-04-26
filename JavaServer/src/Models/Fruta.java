@@ -14,11 +14,16 @@ public class Fruta extends ObjetosJuego{
 		return puntos;
 	}
 	@Override
-	public String toJson() {
+	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
 		obj.put("size", size);
 		return obj.toJSONString();
+	}
+	@Override
+	public JSONObject toJsonObj() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

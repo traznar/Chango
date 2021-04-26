@@ -53,28 +53,28 @@ public class GameData {
 			JSONArray plataformasj = new JSONArray();
 			
 			for(int i =0;i<lianasObj.size();i++) 
-				lianasj.add(lianasObj.get(i).toJson());
+				lianasj.add(lianasObj.get(i).toJsonString());
 			
 			for(int i =0;i<frutasObj.size();i++) 
-				frutasj.add(frutasObj.get(i).toJson());
+				frutasj.add(frutasObj.get(i).toJsonString());
 			
 			for(int i =0;i<cocodrilosObj.size();i++) 
-				cocodrilosj.add(cocodrilosObj.get(i).toJson());
+				cocodrilosj.add(cocodrilosObj.get(i).toJsonString());
 			
 			for(int i =0;i<plataformasObj.size();i++) 
-				plataformasj.add(plataformasObj.get(i).toJson());
+				plataformasj.add(plataformasObj.get(i).toJsonObj());
 		
 			JSONObject obj = new JSONObject();
 			
 			obj.put("gameState", gameState);
-			obj.put("playerData", playerData.toJson());
-			obj.put("plataformas", plataformasj);
+			obj.put("playerData", playerData.toJsonString());
+			obj.put("plataformas", plataformasj.toJSONString());
 			
-			obj.put("lianas", lianasj);
-			obj.put("frutas", frutasj);
-			obj.put("cocodrilos", cocodrilosj);
+			obj.put("lianas", lianasj.toJSONString());
+			obj.put("frutas", frutasj.toJSONString());
+			obj.put("cocodrilos", cocodrilosj.toJSONString());
 			
-			obj.put("DK", dkMario.toJson());
+			obj.put("DK", dkMario.toJsonString());
 
 			
 		return obj.toJSONString();
