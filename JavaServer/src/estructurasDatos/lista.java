@@ -1,81 +1,114 @@
 package estructurasDatos;
 
-public class lista<t>{
-	public NodoL<t> first;
-	public int largo;
+
+
+import java.util.Arrays;
+
+
+public class lista<T> {
+
 	
-	public NodoL<t> getNodo() {
-		return first;
-	}
+	private static final int INITIAL_CAPACITY = 10;
+
+
+	private Object elementData[] = {};
+
+	private int size = 0;
+
 	public lista() {
-		this.first=null;
-		largo=0;
+		elementData = new Object[INITIAL_CAPACITY];
 	}
-	public void addlist(t dato,String nombre) {
-		if (first==null) {
-			first=new NodoL<t>(dato,nombre);
-		}else {
-			NodoL<t> temp=first;
-			while (temp.getNext()!=null) {
-				temp=temp.getNext();
-				}
-			temp.next=new NodoL<t>(dato,nombre);
+
+
+	public void add(T element) {
+
+		if (size == elementData.length) {
+			ensureCapacity();
 		}
-		largo++;
+
+		elementData[size++] = element;
 	}
-	public boolean deleteNode(String dato) {  
-		if (this.first.nombre.equals(dato)){
-			this.first=this.first.next;
-            		largo--;
-            		return true;
-		}else{//Se le pone el nombre de la columna que se desea eliminar de la lista arboles
-			NodoL<t>tmp=this.first;
-			while (tmp.next!=null){
-				if (tmp.next.nombre.equals(dato)){
-					tmp.next=tmp.next.next;
-                    			largo--;
-                    			return true;
-				}else {
-					tmp=tmp.next;
-				}
-			}return false;
+
+
+	@SuppressWarnings("unchecked")
+	public T get(int index) {
+
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("Invalid index passed !!");
 		}
+
+		return (T)elementData[index];
 	}
-	public t Search(String nombre) {//metodo para buscar los indices por sus nombre de columna(key)
-		int cont=0;
-		NodoL<t> temp=first;
-		while (cont<largo) {
-			if (temp.nombre.equals(nombre)) {
-				return temp.getNodo();
-			}else {
-				cont++;
-				temp=temp.next;
+
+	public Object remove(int index) {
+		/* Check for invalid index */
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("Invalid index passed !!");
+		}
+
+		Object removedElement = elementData[index];
+
+		for (int i = index; i < size; i++) {
+			elementData[i] = elementData[i + 1];
+		}
+		size--;
+		return removedElement;
+	}
+
+	public Object[] toArray() {
+		return Arrays.copyOf(elementData, size);
+	}
+
+	public boolean contains(T element) {
+		/* Element should not be null */
+		if (element == null) {
+			throw new IllegalArgumentException("Invalid input. Cannot be null !!");
+		}
+		/* Compare the element with each entry */
+		for (Object object : elementData) {
+			if (object != null && object.equals(element)) {
+				return true;
 			}
 		}
-		return null;
-	} 
-public class NodoL<T>{
-	    private T nodo=null;
-	    public int num;
-	    public String nombre;
-	    public NodoL <T> next=null;
-	    
-	    public NodoL(T nodo,String nombre){
-	        this.nodo= nodo;
-	        this.next= null;
-	        this.nombre=nombre;
-	    }
-	    public T getNodo() {
-	        return nodo;
-	    }
-	    public void setNodo(T nodo) {
-	        this.nodo = nodo;
-	    }
-	    public NodoL<T> getNext() {
-	        return next;
-	    }
-	    public void setNext(NodoL<T> next) {
-	        this.next = next;
-	    }
+		return false;
 	}
+
+	/**
+	 * Method to check the size of list
+	 * 
+	 * @return {@link int}
+	 */
+	public int size() {
+		return size;
+	}
+
+	/**
+	 * Method to check if list is empty
+	 * 
+	 * @return {@link boolean}
+	 */
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	/**
+	 * Method to clear the list
+	 */
+	public void clearAll() {
+		/* Create the element data again and set size to 0 */
+		elementData = new Object[INITIAL_CAPACITY];
+		size = 0;
+	}
+
+	public void display() {
+		for (int i = 0; i < size; i++) {
+			System.out.println("Index = " + i + ", Element = " + elementData[i]);
+		}
+	}
+
+	private void ensureCapacity() {
+		int newIncreasedCapacity = elementData.length * 2;
+		elementData = Arrays.copyOf(elementData, newIncreasedCapacity);
+	}
+
 }

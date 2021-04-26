@@ -6,11 +6,11 @@ public class cocodrilo extends ObjetosJuego{
 	
 	public boolean direccionX;
 	public boolean direccionY;
-	public String nombre;
+	public String type;
 	
 	public cocodrilo(String nombre,int posicionX,int posicionY,int size){
 		super(posicionX,posicionY,size);
-		this.nombre=nombre;
+		this.type=nombre;
 		this.direccionX=false;
 		this.direccionY=false;
 		definirTypo(nombre);
@@ -28,7 +28,7 @@ public class cocodrilo extends ObjetosJuego{
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
-		obj.put("size", size);
+	
 		obj.put("direccionX", direccionX);
 		obj.put("direccionY", direccionY);
 		

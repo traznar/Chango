@@ -12,7 +12,7 @@ public class DKMario extends ObjetosJuego{
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
-		obj.put("size", size);
+
 		obj.put("animation", animation);
 		return obj.toJSONString();
 	}
