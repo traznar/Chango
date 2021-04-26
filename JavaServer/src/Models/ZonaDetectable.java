@@ -7,18 +7,16 @@ import org.json.simple.JSONObject;
  */
 public class ZonaDetectable extends ObjetosJuego{
 	
-	public boolean interactuable;
-	public ZonaDetectable(int posicionX,int posicionY,int size,boolean interactuable){
+
+	public ZonaDetectable(int posicionX,int posicionY,int size){
 		super(posicionX,posicionY,size);
-		
-		this.interactuable=interactuable;
+
 	}
 	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);
 		obj.put("posY", posY);
 
-		obj.put("interactuable", interactuable);
 		return obj.toJSONString();
 	}
 	@Override

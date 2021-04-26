@@ -11,7 +11,8 @@
 
 #define MAX_FPS 20
 //#define IP "192.168.0.6"
-#define IP "192.168.18.27"
+//#define IP "192.168.18.27"
+static char UserIp[20];
 static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
@@ -76,7 +77,7 @@ bool makeRequest(bool printState,char* message){
     struct sockaddr_in server;
     char server_reply[6000];
         server.sin_family = AF_INET;
-        server.sin_addr.s_addr = inet_addr(IP);
+        server.sin_addr.s_addr = inet_addr(UserIp);
         server.sin_port = htons( 8081 );
 
 
@@ -146,7 +147,7 @@ bool makeRequest(bool printState,char* message){
         printf(text);
     }*/
     //===============================Ejemplo de Arrays===========================>
-    printf("\n\n\n");
+
     cJSON *arrayPlat = cJSON_Parse(getStringFromJson(Json, "plataformas"));
     int num = cJSON_GetArraySize(arrayPlat);
 
@@ -282,8 +283,6 @@ int processEvents(SDL_Window *window, GameState *game)
 }
 
 void initCanvas(){
-
-
     SDL_Init(SDL_INIT_VIDEO);
     window=SDL_CreateWindow("CHANGO Jr",
                             SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED
@@ -294,22 +293,15 @@ void initCanvas(){
     loadGame(&gameState);
 
 
-    /* while(!done)
-     {
-         done=processEvents(window, &gameState);
-         doRender(renderer,&gameState);
-     }*/
-
 }
 void* update(){
     initCanvas();
     int done=0;
     char* fpc;
-    fpc= "se va a morir\n\r";
+    fpc= "request\n\r";
     while(!done){
 
-        //makeRequest(true,fpc);
-
+        makeRequest(false,fpc);
         done=processEvents(window, &gameState);
         doRender(renderer,&gameState);
 
@@ -334,6 +326,10 @@ void* update(){
 
 int main(int argc, char* args[]){
     //MENSAJE DE INI
+
+
+    printf("Enter name: ");
+    scanf("%s", UserIp);
 
     bool connect= initClient();
     //CONEXION POSTERIOR

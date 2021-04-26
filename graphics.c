@@ -120,7 +120,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
         SDL_RenderCopy(renderer, game->liana[i].lianaImagen, NULL, &lianaRect2);
     }
 
-    SDL_Rect aguaRect ={game->agua.x,game->agua.y,470,15};
+    SDL_Rect aguaRect ={game->agua.x,game->agua.y,620,15};
     SDL_RenderCopy(renderer,game->agua.aguaImagen,NULL,&aguaRect);
 
     showScore(game);
@@ -143,7 +143,7 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
 void cargarPlataforma(GameState *game, int i, int posX, int posY) {
     SDL_Surface *plataformaImageSurface=NULL;
-    plataformaImageSurface= IMG_Load("plataforma.png");
+    plataformaImageSurface= IMG_Load("plataforma.jpg");
     game->plataformas[i].x= posX;
     game->plataformas[i].y= posY;
     game->plataformas[i].plataformaImagen=SDL_CreateTextureFromSurface(game->renderer,plataformaImageSurface);
@@ -154,9 +154,9 @@ void cargarPlataforma(GameState *game, int i, int posX, int posY) {
 void crearCocodrilosAzules(GameState  *game,int i ,int posX, int posY,int type) {
     SDL_Surface *lagartoImageSurface=NULL;
     if(type == 0){
-        lagartoImageSurface =IMG_Load("lagarto.png");
+        lagartoImageSurface =IMG_Load("lagarto.jpg");
     }else{
-        lagartoImageSurface =IMG_Load("lagartoRojo.png");
+        lagartoImageSurface =IMG_Load("lagartoRojo.jpg");
     }
     game->lagarto[i].x=posX;
     game->lagarto[i].y=posY;
@@ -168,7 +168,7 @@ void crearLianas(GameState *game,int posX, int posY) {
 }
 void crearFrutas(GameState *game,int posX, int posY,int i) {
     SDL_Surface *frutasImageSurface=NULL;
-    frutasImageSurface =IMG_Load("banana.png");
+    frutasImageSurface =IMG_Load("banana.jpg");
     game->frutas[i].x=posX;
     game->frutas[i].y=posY;
     game->frutas[i].frutasImagen= SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
@@ -186,24 +186,18 @@ void loadGame(GameState *game) {
 
 
 
-   // plataformaImageSurface= IMG_Load("plataforma.png");
-    donkeyImageSurface= IMG_Load("Donkey.png");
-    aguaImageSurface =IMG_Load("agua.png");
-    lianaImageSurface =IMG_Load("liana.png");
-    kongImageSurface =IMG_Load("kong.png");
-   // lagartoImageSurface =IMG_Load("lagarto.png");
-  //  frutasImageSurface = IMG_Load("banana.png");
+    donkeyImageSurface= IMG_Load("Donkey.jpg");
+    aguaImageSurface =IMG_Load("agua.jpg");
+    lianaImageSurface =IMG_Load("liana.jpg");
+    kongImageSurface =IMG_Load("kong.jpg");
+
 
     if(donkeyImageSurface ==NULL){
         printf("No se encontro la ruta de la imagen de Donkey.png! \n\n");
         SDL_Quit();
         return ;
     }
-   /* if(plataformaImageSurface ==NULL){
-        printf("No se encontro la ruta de la imagen plataforma.png! \n\n");
-        SDL_Quit();
-        return ;
-    }*/
+
     game->font= TTF_OpenFont("FreeMonoOblique.ttf",48);
     if(!game->font)
     {
@@ -237,7 +231,7 @@ void loadGame(GameState *game) {
     game->plataformas[6].y= 0;
 */
 
-    game->agua.x=150;
+    game->agua.x=0;
     game->agua.y=605;
 /*
     game->lagarto[0].x=150;

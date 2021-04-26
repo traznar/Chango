@@ -18,20 +18,23 @@ public class GameData {
 	 
 	
 	public GameData() {
+		reset();
+	}
+	public void reset() {
 		gameState="initialize";
-		playerData= new PlayerData(12,555,48);
+		playerData= new PlayerData(12,502,48);
 		lianasObj= new  lista<ZonaDetectable>();
 		plataformasObj=new  lista<ZonaDetectable>();
 		cocodrilosObj=new  lista<cocodrilo>();
 		frutasObj=new  lista<Fruta>();
 		dkMario = new DKMario(0,55,1);
 		
-		plataformasObj.add(new ZonaDetectable(40,400,150,false));
-		plataformasObj.add(new ZonaDetectable(0,605,150,false));
-		plataformasObj.add(new ZonaDetectable(500,500,150,false));
-		plataformasObj.add(new ZonaDetectable(300,300,150,false));
-		plataformasObj.add(new ZonaDetectable(0,100,320,false));
-		plataformasObj.add(new ZonaDetectable(420,190,150,false));
+		plataformasObj.add(new ZonaDetectable(40,400,150));
+		plataformasObj.add(new ZonaDetectable(0,550,150));
+		plataformasObj.add(new ZonaDetectable(500,500,150));
+		plataformasObj.add(new ZonaDetectable(300,300,150));
+		plataformasObj.add(new ZonaDetectable(0,100,320));
+		plataformasObj.add(new ZonaDetectable(420,190,150));
 		
 		frutasObj.add(new Fruta(100,150,10,100));
 		frutasObj.add(new Fruta(200,550,10,100));
@@ -41,8 +44,13 @@ public class GameData {
 		cocodrilosObj.add(new cocodrilo(0,70,300,1));
 		cocodrilosObj.add(new cocodrilo(1,300,200,1));
 		cocodrilosObj.add(new cocodrilo(1,100,700,1));
+		
+		lianasObj.add(new ZonaDetectable(140,400,60));
+		lianasObj.add(new ZonaDetectable(190,400,60));
+		lianasObj.add(new ZonaDetectable(350,300,60));
+		lianasObj.add(new ZonaDetectable(450,300,60));
+		lianasObj.add(new ZonaDetectable(490,190,40));
 	}
-	
 	@SuppressWarnings("unchecked")
 	
 	public String toJson() {

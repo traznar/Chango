@@ -23,9 +23,7 @@ public class Servidor {
     	System.out.println(message + "\n");
     }
     public Servidor() {
-
         try {
-        	
             ServerSocket servidor= new ServerSocket(port); //intenta hacer la conexion
             print("Server iniciado");
             controller=GameStateController.getInstance(); 
@@ -44,16 +42,13 @@ public class Servidor {
                 InputStreamReader streamReader= new InputStreamReader(puenteS.getInputStream());
                 BufferedReader reader= new BufferedReader(streamReader);
                 
-                print("===================================>");
-                for(int i=0;i<controller.gameData.getFrutasObj().size();i++) {
-                	print((controller.gameData.getFrutasObj().get(i).toJsonString()+ "\n"));
-                }
-                
-                
+                	
                 
                 puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());  
                 String value= reader.readLine();
+                print(value);
                 procesClientRequest(value);
+                gravityAction();
        
                 
 
@@ -65,11 +60,17 @@ public class Servidor {
         }
     }
     
+    
+    public void gravityAction() {
+    	procesClientRequest("down");
+    }
+    
+    
     public void procesClientRequest(String request){
     	int velocity= 10;
     	
         if(request.compareTo("up")==0)
-            	controller.moverMono(0, -velocity);        	
+            	controller.moverMono(0, -5*velocity);        	
         if(request.compareTo("down")==0)  
         	controller.moverMono(0, velocity);
         if(request.compareTo("left")==0)  

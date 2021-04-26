@@ -3,6 +3,7 @@ package Code;
 
 import Models.PlayerData;
 import Models.ZonaDetectable;
+import Models.cocodrilo;
 import estructurasDatos.lista;
 import Models.Fruta;
 import Models.GameData;
@@ -39,24 +40,48 @@ public class GameStateController {
 			data.posX=newX;
 			data.posY=newY;
 			verifyFruitsColl(newX,newY,size);
+			verifyEnemyColl(newX,newY,size);
 		}
 		
 	}
 	
+	
+	public void verifyEnemyColl(int newX, int newY,int size) {
+		lista<cocodrilo> lagartos=gameData.getCocodrilosObj();
+		for(int i=0; i< lagartos.size(); i++) {
+			cocodrilo lagartillo=lagartos.get(i);
+			int pX=lagartillo.posX;
+			int pY=lagartillo.posY;
+			int l =lagartillo.getSize();
+		    float h=15;
+			if(((newX+size)<=pX || (newX>=(pX+l))) )
+				continue;
+			else {
+				if(((newY>=(pY+h))||(newY+size-h)<=pY)) 
+					continue;
+				else{
+					lagartillo.posX=1000000;
+					gameData.setCocodrilosObj(lagartos);
+					gameData.getPlayerData().vidas-=1;
+					
+					if(gameData.getPlayerData().vidas<=0) {
+						gameData.reset();
+					}
+					}	
+				}
+		}
+		
+	}
+	
+	
 	public void verifyFruitsColl(int newX, int newY,int size) {
 		lista<Fruta> frutas=gameData.getFrutasObj();
-	
-		
 		for(int i=0; i< frutas.size(); i++) {
 			Fruta frutilla=frutas.get(i);
 			int pX=frutilla.posX;
 			int pY=frutilla.posY;
 			int l =frutilla.getSize();
-
 		    float h=15;
-		    
-	
-					
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
 			else {
