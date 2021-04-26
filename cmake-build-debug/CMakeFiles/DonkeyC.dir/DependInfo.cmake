@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Brandon/Desktop/BasuraProyecto/Chango/graphics.c" "C:/Users/Brandon/Desktop/BasuraProyecto/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj"
-  "C:/Users/Brandon/Desktop/BasuraProyecto/Chango/main.c" "C:/Users/Brandon/Desktop/BasuraProyecto/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj"
+  "C:/Users/adrii/OneDrive/Escritorio/Chango/graphics.c" "C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj"
+  "C:/Users/adrii/OneDrive/Escritorio/Chango/main.c" "C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
