@@ -18,7 +18,7 @@ static int MAX_ATTEMPTS =5;
 static GameState gameState;
 static SDL_Window  *window=NULL;
 static SDL_Renderer *renderer=NULL;
-
+char* str1[100];
 
 
 
@@ -30,11 +30,18 @@ char* getStringFromJson(char *json, char *key ){
 double getNumberFromJson(char *json, char *key ){
     return (cJSON_GetObjectItemCaseSensitive(cJSON_Parse(json), key)->valuedouble);
 }
-void donkeyKongJrUpdater(int posX, int posY){
+void donkeyKongJrUpdater(int posX, int posY,int vidas){
+    SDL_Color white= {255,255,255,255};
     printf(" Posicion en X de donkeyJR : ");
-    printf("%i",posX );
+    printf("%i",posX);
     printf(" Posicion en Y de donkeyJR : ");
-    printf("%i",posY );
+    printf("%i",posY);
+    printf(" Vidas de donkeyJR : ");
+    printf("%i",vidas);
+    sprintf(str1,"%d",vidas);
+    SDL_Surface *tmp2 = TTF_RenderText_Blended(gameState.font, strcat(str1," <-Vidas") , white);
+    gameState.labelvidas =SDL_CreateTextureFromSurface(gameState.renderer, tmp2);
+    SDL_FreeSurface(tmp2);
 
 }
 void lagartosUpdater(int posX, int posY){
@@ -42,6 +49,7 @@ void lagartosUpdater(int posX, int posY){
     printf("%i",posX );
     printf(" Posicion en Y de lagartos : ");
     printf("%i",posY );
+
 
 }
 void frutasUpdater(int posX, int posY){
@@ -112,12 +120,12 @@ bool makeRequest(bool printState,char* message){
     char *dataDelJugador=getStringFromJson(Json, "playerData");
     int valorQueQueremosSacar=getNumberFromJson(dataDelJugador, "size");
 
-    char *donkeyData=getStringFromJson(Json, "DK");
+    char *donkeyData=getStringFromJson(Json, "playerData");
     int donkeyposX=getNumberFromJson(donkeyData, "posX");
     int donkeyposY=getNumberFromJson(donkeyData, "posY");
+    int vidas=getNumberFromJson(donkeyData, "vidas");
 
-
-    char *lagartosData=getStringFromJson(Json, "cocodrilos");
+    //char *lagartosData=getStringFromJson(Json, "cocodrilos");
     //printf("\n");
     //printf("===========================================>");
    // printf("%s", lagartosData);
@@ -126,7 +134,7 @@ bool makeRequest(bool printState,char* message){
     //int lagartoY=getNumberFromJson(lagartosData, "posY");
 
     //printf(data2);
-    donkeyKongJrUpdater(donkeyposX,donkeyposY);
+    donkeyKongJrUpdater(donkeyposX,donkeyposY,vidas);
     //lagartosUpdater(lagartoX,lagartoY);
     /**
     printf(Json);

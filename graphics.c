@@ -26,11 +26,11 @@ void showScore(GameState *game) {
     SDL_Surface *tmp = TTF_RenderText_Blended(game->font, strcat(str," <-Puntaje") , white);
     game->label = SDL_CreateTextureFromSurface(game->renderer, tmp);
 
-    SDL_Surface *tmp2 = TTF_RenderText_Blended(game->font, strcat(str1," <-Vidas") , white);
-    game->labelvidas =SDL_CreateTextureFromSurface(game->renderer, tmp2);
+    //SDL_Surface *tmp2 = TTF_RenderText_Blended(game->font, strcat(str1," <-Vidas") , white);
+    //game->labelvidas =SDL_CreateTextureFromSurface(game->renderer, tmp2);
 
     SDL_FreeSurface(tmp);
-    SDL_FreeSurface(tmp2);
+    //SDL_FreeSurface(tmp2);
 }
 
 
@@ -107,6 +107,22 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
 }
 
+void crearPlataforma(int posX, int posY)
+{
+
+}
+void crearCocodrilos(int posX, int posY)
+{
+
+}
+void crearLianas(int posX, int posY)
+{
+
+}
+void crearFrutas(int posX, int posY)
+{
+
+}
 
 void loadGame(GameState *game) {
     SDL_Surface *donkeyImageSurface=NULL; //source pixels of the image
