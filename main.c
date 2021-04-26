@@ -90,11 +90,17 @@ bool makeRequest(bool printState,char* message){
     }
     server_reply[state]='\0';
    // if(printState)printf("@: Respuesta obtenida: %s \n", server_reply);
-    char *string = NULL;
-    string = cJSON_Print(cJSON_Parse(server_reply));
 
+    char *Json = cJSON_Print(cJSON_Parse(server_reply));
+    char *dataDelJugador=getStringFromJson(Json, "playerData");
+    int valorQueQueremosSacar=getNumberFromJson(dataDelJugador, "size");
+    printf(Json);
+    printf("\n\n\n");
+    printf(dataDelJugador);
+    printf("\n\n\n");
+    printf("%i",valorQueQueremosSacar );
+    printf("\n\n\n");
 
-    printf("%i",(int) getNumberFromJson(getStringFromJson(string, "playerData"), "vidas"));
 
     closesocket(mySocket);
     return true;
