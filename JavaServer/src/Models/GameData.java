@@ -20,6 +20,9 @@ public class GameData {
 	public GameData() {
 		reset();
 	}
+	/**
+	 * @def reset initializes all objects coordinates
+	 */
 	public void reset() {
 		gameState="initialize";
 		playerData= new PlayerData(12,502,48);
@@ -52,7 +55,10 @@ public class GameData {
 		lianasObj.add(new ZonaDetectable(490,190,40));
 	}
 	@SuppressWarnings("unchecked")
-	
+	/**
+	 * @def converts gameData to Json format
+	 * @return
+	 */
 	public String toJson() {
 		
 		

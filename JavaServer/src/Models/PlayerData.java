@@ -6,7 +6,9 @@ public class PlayerData extends ObjetosJuego{
 	
 	public int puntuacion;
 	public int vidas;
-	public String animation;
+	public int animation;
+	public boolean canFall=true;
+	public boolean canJump=true;
 	
 	public PlayerData(int posiX,int posiY,int size){
 		super(posiX,posiY,size);
@@ -24,6 +26,18 @@ public class PlayerData extends ObjetosJuego{
 		
 		return obj.toJSONString();
 
+	}
+	public boolean CanFall() {
+		return canFall;
+	}
+	public void setCanFall(boolean canFall) {
+		this.canFall = canFall;
+	}
+	public boolean CanJump() {
+		return canJump;
+	}
+	public void setCanJump(boolean canJump) {
+		this.canJump = canJump;
 	}
 	@Override
 	public JSONObject toJsonObj() {

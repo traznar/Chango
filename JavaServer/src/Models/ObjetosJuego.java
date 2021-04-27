@@ -42,6 +42,14 @@ public abstract class ObjetosJuego {
 	public int getPosiTotalY(){
 		return (posY+size);
 	}	
+	/**
+	 * @def convert the object to json string
+	 * @return json string
+	 */
 	public abstract String toJsonString(); 
+	/**
+	 * @def convert the object to json object
+	 * @return
+	 */
 	public abstract JSONObject toJsonObj(); 
 }
