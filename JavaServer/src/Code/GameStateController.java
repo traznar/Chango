@@ -47,6 +47,7 @@ public class GameStateController {
 			data.posY=newY;
 			verifyFruitsColl(newX,newY,size);
 			verifyEnemyColl(newX,newY,size);
+			verifyAguaColl(newX,newY,size);
 		}
 		
 	}
@@ -97,6 +98,17 @@ public class GameStateController {
 		}
 		
 	}
+	public void verifyAguaColl(int newX, int newY,int size){
+        if(newY>=561){
+            gameData.getPlayerData().vidas--;
+            if(gameData.getPlayerData().vidas<=0) {
+                gameData.reset();
+            }else {
+                gameData.getPlayerData().setPosiX(12);
+                gameData.getPlayerData().setPosiY(502);
+            }
+        }
+    }
 	/**
 	 * @def verifies collisions with fruits
 	 * @param newX
