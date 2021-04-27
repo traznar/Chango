@@ -104,8 +104,11 @@ CMakeFiles/DonkeyC.dir/main.c.obj
  ../SDL/include/SDL_video.h
  ../SDL/include/begin_code.h
  ../SDL/include/close_code.h
- C:/Users/adrii/OneDrive/Escritorio/Chango/cJSON.c
- C:/Users/adrii/OneDrive/Escritorio/Chango/cJSON.h
+ C:/Users/adrii/OneDrive/Escritorio/Chango/Game.c
+ C:/Users/adrii/OneDrive/Escritorio/Chango/Sockets.c
  C:/Users/adrii/OneDrive/Escritorio/Chango/graphics.h
+ C:/Users/adrii/OneDrive/Escritorio/Chango/libraries/cJSON.c
+ C:/Users/adrii/OneDrive/Escritorio/Chango/libraries/cJSON.h
+ C:/Users/adrii/OneDrive/Escritorio/Chango/libraries/tools.c
+ C:/Users/adrii/OneDrive/Escritorio/Chango/libraries/usleep.h
  C:/Users/adrii/OneDrive/Escritorio/Chango/main.c
- C:/Users/adrii/OneDrive/Escritorio/Chango/usleep.h

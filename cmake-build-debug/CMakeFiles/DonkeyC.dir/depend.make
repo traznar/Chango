@@ -103,9 +103,12 @@ CMakeFiles/DonkeyC.dir/main.c.obj: ../SDL/include/SDL_version.h
 CMakeFiles/DonkeyC.dir/main.c.obj: ../SDL/include/SDL_video.h
 CMakeFiles/DonkeyC.dir/main.c.obj: ../SDL/include/begin_code.h
 CMakeFiles/DonkeyC.dir/main.c.obj: ../SDL/include/close_code.h
-CMakeFiles/DonkeyC.dir/main.c.obj: ../cJSON.c
-CMakeFiles/DonkeyC.dir/main.c.obj: ../cJSON.h
+CMakeFiles/DonkeyC.dir/main.c.obj: ../Game.c
+CMakeFiles/DonkeyC.dir/main.c.obj: ../Sockets.c
 CMakeFiles/DonkeyC.dir/main.c.obj: ../graphics.h
+CMakeFiles/DonkeyC.dir/main.c.obj: ../libraries/cJSON.c
+CMakeFiles/DonkeyC.dir/main.c.obj: ../libraries/cJSON.h
+CMakeFiles/DonkeyC.dir/main.c.obj: ../libraries/tools.c
+CMakeFiles/DonkeyC.dir/main.c.obj: ../libraries/usleep.h
 CMakeFiles/DonkeyC.dir/main.c.obj: ../main.c
-CMakeFiles/DonkeyC.dir/main.c.obj: ../usleep.h
 

@@ -11,7 +11,10 @@ char str[100];
 char str1[100];
 
 
-
+/**
+ * @def showScore
+ * @param game
+ */
 void showScore(GameState *game) {
     SDL_Color white= {255,255,255,255};
     sprintf(str,"%d",game->donkeyJr.x);
@@ -27,7 +30,10 @@ void showScore(GameState *game) {
     //SDL_FreeSurface(tmp2);
 }
 
-
+/**
+ * @def render a label in canvas
+ * @param game
+ */
 void drawLabel(GameState *game) {
     SDL_Rect textRect = {500, 20 ,120,60};
     SDL_RenderCopy(game->renderer,game->label,NULL, &textRect);
@@ -36,14 +42,21 @@ void drawLabel(GameState *game) {
     SDL_RenderCopy(game->renderer,game->labelvidas,NULL, &vidaRect);
 }
 
-
+/**
+ * @ destroy a Label in the gamestate
+ * @param game
+ */
 void destroyLabel(GameState *game) {
     SDL_DestroyTexture(game->label);
     game->label =NULL;
     SDL_DestroyTexture(game->labelvidas);
     game->labelvidas =NULL;
 }
-
+/**
+ * @def Renderes all elements in the game
+ * @param renderer
+ * @param game
+ */
 void doRender(SDL_Renderer *renderer, GameState *game) {
     //El fondo del window va a hacer azul, esta vara es como
     //agarrar un lapiz de un color para pintar pero aun no ha pintado
@@ -73,44 +86,16 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     SDL_Rect plataformaRect7 ={game->plataformas[6].x,game->plataformas[6].y,240,20};
     SDL_RenderCopy(renderer,game->plataformas[6].plataformaImagen,NULL,&plataformaRect7);
 
-    SDL_Rect lagartoRect ={game->lagarto[0].x,game->lagarto[0].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[0].lagartoImagen,NULL,&lagartoRect);
-    SDL_Rect lagartoRect1 ={game->lagarto[1].x,game->lagarto[1].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[1].lagartoImagen,NULL,&lagartoRect1);
-    SDL_Rect lagartoRect2 ={game->lagarto[2].x,game->lagarto[2].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[2].lagartoImagen,NULL,&lagartoRect2);
-    SDL_Rect lagartoRect3 ={game->lagarto[3].x,game->lagarto[3].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[3].lagartoImagen,NULL,&lagartoRect3);
-    SDL_Rect lagartoRect4 ={game->lagarto[4].x,game->lagarto[4].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[4].lagartoImagen,NULL,&lagartoRect4);
-    SDL_Rect lagartoRect5 ={game->lagarto[5].x,game->lagarto[5].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[5].lagartoImagen,NULL,&lagartoRect5);
-    SDL_Rect lagartoRect6 ={game->lagarto[6].x,game->lagarto[6].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[6].lagartoImagen,NULL,&lagartoRect6);
-    SDL_Rect lagartoRect7 ={game->lagarto[7].x,game->lagarto[7].y,14,32};
-    SDL_RenderCopy(renderer,game->lagarto[7].lagartoImagen,NULL,&lagartoRect7);
 
 
-    SDL_Rect frutasRect ={game->frutas[0].x,game->frutas[0].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[0].frutasImagen,NULL,&frutasRect);
-    SDL_Rect frutasRect1 ={game->frutas[1].x,game->frutas[1].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[1].frutasImagen,NULL,&frutasRect1);
-    SDL_Rect frutasRect2 ={game->frutas[2].x,game->frutas[2].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[2].frutasImagen,NULL,&frutasRect2);
-    SDL_Rect frutasRect3 ={game->frutas[3].x,game->frutas[3].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[3].frutasImagen,NULL,&frutasRect3);
-    SDL_Rect frutasRect4 ={game->frutas[4].x,game->frutas[4].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[4].frutasImagen,NULL,&frutasRect4);
-    SDL_Rect frutasRect5 ={game->frutas[5].x,game->frutas[5].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[5].frutasImagen,NULL,&frutasRect5);
-    SDL_Rect frutasRect6 ={game->frutas[6].x,game->frutas[6].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[6].frutasImagen,NULL,&frutasRect6);
-    SDL_Rect frutasRect7 ={game->frutas[7].x,game->frutas[7].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[7].frutasImagen,NULL,&frutasRect7);
-    SDL_Rect frutasRect8 ={game->frutas[8].x,game->frutas[8].y,16,16};
-    SDL_RenderCopy(renderer,game->frutas[8].frutasImagen,NULL,&frutasRect8);
-
-
+    for(int i=0 ;i<9;i++){
+        SDL_Rect lagartoRect ={game->lagarto[i].x,game->lagarto[i].y,14,32};
+        SDL_RenderCopy(renderer,game->lagarto[i].lagartoImagen,NULL,&lagartoRect);
+    }
+    for(int i=0 ;i<9;i++){
+        SDL_Rect frutasRect ={game->frutas[i].x,game->frutas[i].y,16,16};
+        SDL_RenderCopy(renderer,game->frutas[i].frutasImagen,NULL,&frutasRect);
+    }
     for(int i =0; i<7; i++) {
         SDL_Rect lianaRect = {game->liana[i].x, game->liana[i].y, 6, 120};
         SDL_RenderCopy(renderer, game->liana[i].lianaImagen, NULL, &lianaRect);
@@ -132,12 +117,6 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
 
 }
 
-
-
-/*void crearPlataforma(int posX, int posY, GameState *game, int i) {
-    SDL_Rect plataformaRect ={game->plataformas[i].x,game->plataformas[i].y,150,20};
-    SDL_RenderCopy(game->renderer,game->plataformas[i].plataformaImagen,NULL,&plataformaRect);
-}*/
 
 
 
@@ -208,28 +187,6 @@ void loadGame(GameState *game) {
 
     game->donkeyJr.x=12;
     game->donkeyJr.y= 555;
-/*
-    game->plataformas[0].x= 0;
-    game->plataformas[0].y=605;
-
-    game->plataformas[1].x= 500;
-    game->plataformas[1].y=500;
-
-    game->plataformas[2].x= 40;
-    game->plataformas[2].y= 400;
-
-    game->plataformas[3].x= 300;
-    game->plataformas[3].y= 300;
-
-    game->plataformas[4].x= 0;
-    game->plataformas[4].y= 100;
-
-    game->plataformas[5].x= 420;
-    game->plataformas[5].y= 190;
-
-    game->plataformas[6].x= 320;
-    game->plataformas[6].y= 0;
-*/
 
     game->agua.x=0;
     game->agua.y=605;
