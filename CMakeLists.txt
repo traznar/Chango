@@ -2,10 +2,8 @@ cmake_minimum_required(VERSION 3.17)
 project(DonkeyC C)
 
 set(CMAKE_C_STANDARD 99)
-set(SDL2_INCLUDE_DIR C:/Users/adrii/OneDrive/Escritorio/Chango/SDL/include)
-set(SDL2_LIB_DIR C:/Users/adrii/OneDrive/Escritorio/Chango/SDL/lib/x86)
-
-
+set(SDL2_INCLUDE_DIR C:/Users/Brandon/Desktop/DonkeyC/SDL/include)
+set(SDL2_LIB_DIR C:/Users/Brandon/Desktop/DonkeyC/SDL/lib/x86)
 
 
 

@@ -7,9 +7,13 @@
 #include "SDL_ttf.h"
 typedef struct {
     int x,y;
+    int dx,dy;
     short life;
     char *name;
-    SDL_Texture *donkeyImage;
+    int animFrame, facingLeft;
+    int time;
+    SDL_Texture *donkeyImage[3];
+
 } DonkeyJr;
 typedef struct {
     int x,y;
@@ -48,6 +52,7 @@ typedef struct {
     SDL_Texture *labelvidas;
     Lagarto lagarto[10];
     Frutas frutas[10];
+
 
     TTF_Font *font;
 } GameState;

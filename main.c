@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "Game.c"
 
-//#define IP "192.168.0.6"
-#define IP "192.168.18.27"
-static char UserIp[20];
+
+#define IP "192.168.0.6"
+//#define IP "192.168.18.27"
+static char UserIp[20]=IP;
+
 
 
 int main(int argc, char* args[]){
