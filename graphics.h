@@ -4,7 +4,7 @@
 
 #ifndef DONKEYC_GRAPHICS_H
 #define DONKEYC_GRAPHICS_H
-#include "SDL_ttf.h"
+#include "SDL2\SDL_ttf.h"
 typedef struct {
     int x,y;
     int dx,dy;

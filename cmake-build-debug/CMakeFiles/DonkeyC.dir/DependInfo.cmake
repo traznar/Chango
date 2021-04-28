@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/adrii/OneDrive/Escritorio/Chango/graphics.c" "C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj"
-  "C:/Users/adrii/OneDrive/Escritorio/Chango/main.c" "C:/Users/adrii/OneDrive/Escritorio/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj"
+  "C:/Users/usuario/Nueva carpeta/Chango/graphics.c" "C:/Users/usuario/Nueva carpeta/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj"
+  "C:/Users/usuario/Nueva carpeta/Chango/main.c" "C:/Users/usuario/Nueva carpeta/Chango/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../SDL/include"
+  "C:/Users/adrii/OneDrive/Escritorio/Chango/SDL/include"
   )
 
 # Targets to which this target links.

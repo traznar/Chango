@@ -62,10 +62,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.1\bin\cmake\win\bin\cmake.exe" -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\adrii\OneDrive\Escritorio\Chango
+CMAKE_SOURCE_DIR = "C:\Users\usuario\Nueva carpeta\Chango"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -92,14 +92,14 @@ clean: CMakeFiles/DonkeyC.dir/clean
 CMakeFiles/DonkeyC.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonkeyC.dir\build.make CMakeFiles/DonkeyC.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DonkeyC.dir\build.make CMakeFiles/DonkeyC.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target DonkeyC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" --progress-num=1,2,3 "Built target DonkeyC"
 .PHONY : CMakeFiles/DonkeyC.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DonkeyC.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DonkeyC.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/DonkeyC.dir/rule
 
 # Convenience name for target.

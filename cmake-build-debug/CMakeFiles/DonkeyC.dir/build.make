@@ -61,10 +61,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.1\bin\cmake\win\bin\cmake.exe" -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\adrii\OneDrive\Escritorio\Chango
+CMAKE_SOURCE_DIR = "C:\Users\usuario\Nueva carpeta\Chango"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DonkeyC.dir/depend.make
@@ -78,30 +78,30 @@ include CMakeFiles/DonkeyC.dir/flags.make
 CMakeFiles/DonkeyC.dir/main.c.obj: CMakeFiles/DonkeyC.dir/flags.make
 CMakeFiles/DonkeyC.dir/main.c.obj: CMakeFiles/DonkeyC.dir/includes_C.rsp
 CMakeFiles/DonkeyC.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/DonkeyC.dir/main.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DonkeyC.dir\main.c.obj -c C:\Users\adrii\OneDrive\Escritorio\Chango\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/DonkeyC.dir/main.c.obj"
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DonkeyC.dir\main.c.obj -c "C:\Users\usuario\Nueva carpeta\Chango\main.c"
 
 CMakeFiles/DonkeyC.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DonkeyC.dir/main.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\adrii\OneDrive\Escritorio\Chango\main.c > CMakeFiles\DonkeyC.dir\main.c.i
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\usuario\Nueva carpeta\Chango\main.c" > CMakeFiles\DonkeyC.dir\main.c.i
 
 CMakeFiles/DonkeyC.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DonkeyC.dir/main.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\adrii\OneDrive\Escritorio\Chango\main.c -o CMakeFiles\DonkeyC.dir\main.c.s
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\usuario\Nueva carpeta\Chango\main.c" -o CMakeFiles\DonkeyC.dir\main.c.s
 
 CMakeFiles/DonkeyC.dir/graphics.c.obj: CMakeFiles/DonkeyC.dir/flags.make
 CMakeFiles/DonkeyC.dir/graphics.c.obj: CMakeFiles/DonkeyC.dir/includes_C.rsp
 CMakeFiles/DonkeyC.dir/graphics.c.obj: ../graphics.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/DonkeyC.dir/graphics.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DonkeyC.dir\graphics.c.obj -c C:\Users\adrii\OneDrive\Escritorio\Chango\graphics.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/DonkeyC.dir/graphics.c.obj"
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\DonkeyC.dir\graphics.c.obj -c "C:\Users\usuario\Nueva carpeta\Chango\graphics.c"
 
 CMakeFiles/DonkeyC.dir/graphics.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/DonkeyC.dir/graphics.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\adrii\OneDrive\Escritorio\Chango\graphics.c > CMakeFiles\DonkeyC.dir\graphics.c.i
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\usuario\Nueva carpeta\Chango\graphics.c" > CMakeFiles\DonkeyC.dir\graphics.c.i
 
 CMakeFiles/DonkeyC.dir/graphics.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/DonkeyC.dir/graphics.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\adrii\OneDrive\Escritorio\Chango\graphics.c -o CMakeFiles\DonkeyC.dir\graphics.c.s
+	C:\PROGRA~2\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\usuario\Nueva carpeta\Chango\graphics.c" -o CMakeFiles\DonkeyC.dir\graphics.c.s
 
 # Object files for target DonkeyC
 DonkeyC_OBJECTS = \
@@ -117,7 +117,7 @@ DonkeyC.exe: CMakeFiles/DonkeyC.dir/build.make
 DonkeyC.exe: CMakeFiles/DonkeyC.dir/linklibs.rsp
 DonkeyC.exe: CMakeFiles/DonkeyC.dir/objects1.rsp
 DonkeyC.exe: CMakeFiles/DonkeyC.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable DonkeyC.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable DonkeyC.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DonkeyC.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -130,6 +130,6 @@ CMakeFiles/DonkeyC.dir/clean:
 .PHONY : CMakeFiles/DonkeyC.dir/clean
 
 CMakeFiles/DonkeyC.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\adrii\OneDrive\Escritorio\Chango C:\Users\adrii\OneDrive\Escritorio\Chango C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug C:\Users\adrii\OneDrive\Escritorio\Chango\cmake-build-debug\CMakeFiles\DonkeyC.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\usuario\Nueva carpeta\Chango" "C:\Users\usuario\Nueva carpeta\Chango" "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug" "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug" "C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug\CMakeFiles\DonkeyC.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/DonkeyC.dir/depend
 

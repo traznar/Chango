@@ -41,7 +41,7 @@ int processEvents(SDL_Window *window, GameState *game){
         }
     }
     const Uint8 *state =SDL_GetKeyboardState(NULL);
-    if(strcmp(User,"Jugador")!=0)return done;
+    //if(strcmp(User,"jugador")!=0)return done;
     if (state[SDL_SCANCODE_A]){
         char* left;
         left="left";

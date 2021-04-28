@@ -7,7 +7,6 @@ public class Fruta extends ObjetosJuego{
 	
 	public Fruta(int posicionX,int posicionY,int size, int pts){
 		super(posicionX,posicionY,size);
-		
 		this.puntos=pts;
 	}
 	public int getPuntos(){

@@ -1,15 +1,14 @@
 package Code;
 import java.util.Scanner;
 
+import Models.Fruta;
 import Models.cocodrilo;
 public class JugadorSecundario extends Thread{
-	
+	int cont=0;
 	public GameStateController controller;
 	public JugadorSecundario(GameStateController c){
 		controller=c;
 	}
-	
-	
     public void run(){
     	while(true){
     		System.out.println("->:");
@@ -24,23 +23,18 @@ public class JugadorSecundario extends Thread{
     		String res=arr[1];
     		String key=arr[0];
 			String[] arrRes = res.split(",");
-			
-			
-			switch(key)
-			{
+			switch(key){
 				case "cocodrilo":
 	    			controller.makeCocodrilo(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]),
 	    			controller.gameData.getLianasObj().get(Integer.parseInt(arrRes[4])));
-	    		
 				case "fruta":
-	    				controller.makeFruta(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
-	    		
-				case "liana":
-					controller.makeLiana(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
-	    				
+					if( Integer.parseInt(arrRes[4])==0){
+						controller.makeFruta(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
+					}else {
+						controller.deleteFruta(cont);
+						cont++;
+					};			
 			}
-			
-    		
     	}else{
     		System.out.println("error de sintaxis: revise el manual de usuario");
     	}
@@ -48,5 +42,4 @@ public class JugadorSecundario extends Thread{
 }
 
 //cocodrilo (,1,20,200,1,)
-//fruta (,0,130,500,)
-//liana (,380,370,300,)
+//fruta (,100,130,500,0,)

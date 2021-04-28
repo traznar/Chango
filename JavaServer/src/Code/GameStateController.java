@@ -18,17 +18,14 @@ public class GameStateController {
 	
 	private GameStateController () {
 		gameData= new GameData();
-	
 	}
 	
 	public  String getGameData() {
-		
 		return gameData.toJson();
 	}
 	
 
 	public static GameStateController getInstance() {
-
 		return controller;
 	}
 	
@@ -37,14 +34,14 @@ public class GameStateController {
     	gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1,liana));
     }
     public void makeFruta(int puntaje,int x, int y){
-    		gameData.getFrutasObj().add(new Fruta(x,y,10,puntaje));
+    	gameData.getFrutasObj().add(new Fruta(x,y,10,puntaje));
+    }
+    public void deleteFruta(int cont){
+    	gameData.getFrutasObj().get(cont).posX=1000;
     }
     public void makeLiana(int size,int x, int y){
 		gameData.getLianasObj().add(new ZonaDetectable(x,y,size));
     }
-	    
-	
-	
 	/**
 	 * @def update all objects position
 	 */
@@ -60,14 +57,14 @@ public class GameStateController {
 		PlayerData data=gameData.getPlayerData();
 		float size=data.getSize();
 		float newX=data.posX+x;
-		float newY=data.posY+y;
-		
+		float newY=data.posY+y;	
 		if((newX>0 & newX<572 & newY >5 & newY < 565) && verifyrPlatformColl(newX,newY,size,data.posX,data.posY)) {
 			data.posX=newX;
 			data.posY=newY;
 			verifyFruitsColl(newX,newY,size);
 			verifyEnemyColl(newX,newY,size);
 			verifyAguaColl(newX,newY,size);
+			verifyGanador(newX,newY,size);
 			verifylianasColl(newX,newY,size);
 		}
 		
@@ -78,7 +75,6 @@ public class GameStateController {
 	 * @param velocity
 	 */
 	public void jump( float velocity) {
-		
 		PlayerData data=gameData.getPlayerData();
 		if(data.isGrab()) {
 			moverMono(0,-velocity);
@@ -89,7 +85,6 @@ public class GameStateController {
 				data.setCanJump(false);
 			}
 		}
-		
 	}
 	
 	/**
@@ -118,11 +113,10 @@ public class GameStateController {
 					
 					if(gameData.getPlayerData().vidas<=0) {
 						gameData.reset();
-					}
+						}
 					}	
 				}
-		}
-		
+			}
 	}
 	
 	/**
@@ -142,6 +136,15 @@ public class GameStateController {
             }
         }
     }
+	//fruta (,x100,y130,50,)  && ((newY+size>=1) && (newY+size<=100) )
+	public void verifyGanador(float newX, float newY,float size){
+		// && ((newX+size>=130) && (newX<=130))
+		if( ((newY+size>=80)&&(newY<=80)) && ((newX+size>=130) && (newX<=130)) ){
+			gameData.reset();
+			System.out.print("Gano");
+		}
+	}
+	
 	/**
 	 * @def verifies collisions with fruits
 	 * @param newX
@@ -162,7 +165,6 @@ public class GameStateController {
 				if(((newY>=(pY+h))||(newY+size-h)<=pY)) 
 					continue;
 				else{
-					
 					frutilla.posX=1000000;
 					gameData.setFrutasObj(frutas);
 					gameData.getPlayerData().puntuacion+=frutilla.getPuntos();
@@ -180,16 +182,12 @@ public class GameStateController {
 	public void verifylianasColl(float newX, float newY,float size) {
 		PlayerData data=gameData.getPlayerData();
 		lista<ZonaDetectable> lianas =gameData.getLianasObj();
-		
 		for(int i=0; i< lianas.size(); i++) {
 			ZonaDetectable liana=lianas.get(i);
 			float pX=liana.posX;
 			float pY=liana.posY;
 			float l =liana.getSize();
-		
 		    float tolerance=30;
-
-		    
 		    if(((newX+size)>pX && (newX<(pX)))){
 				if(((newY<=(pY+l))&&(newY)>=pY)) {
 					data.setGrab(true);					
@@ -209,10 +207,7 @@ public class GameStateController {
 	 * @return boolean canIwalt To this position? 
 	 */
 	public boolean verifyrPlatformColl(float newX, float newY,float size,float oldX, float oldY) {
-		
 		lista<ZonaDetectable> plataformas =gameData.getPlataformasObj();
-		
-
 		for(int i=0; i< plataformas.size(); i++) {
 			ZonaDetectable plataforma=plataformas.get(i);
 			float pX=plataforma.posX;
@@ -220,16 +215,12 @@ public class GameStateController {
 			float l =plataforma.getSize();
 		    float h=5;
 		    float tolerance=6;
-		    
 		    if(((oldX+size)>pX && (oldX<(pX+l)))){
-		    	
 				if(Math.abs((oldY+size)-(pY+h))<tolerance && oldY<pY) {
 					PlayerData data=gameData.getPlayerData();
-
 					data.setCanJump(true);					
 				}	
 		    }
-
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
 			else {
@@ -240,7 +231,6 @@ public class GameStateController {
 			}				
 		}
 		return true;
-
 	}
 
 }
