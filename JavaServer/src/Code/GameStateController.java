@@ -31,6 +31,12 @@ public class GameStateController {
 
 		return controller;
 	}
+	
+	
+	
+	public void updateObjsPosition() {
+		gameData.update();
+	}
 	/**
 	 * @def moves the monkey
 	 * @param x
@@ -53,6 +59,10 @@ public class GameStateController {
 		
 	}
 	
+	/**
+	 * @def make a jump movement
+	 * @param velocity
+	 */
 	public void jump( float velocity) {
 		
 		PlayerData data=gameData.getPlayerData();
@@ -100,8 +110,15 @@ public class GameStateController {
 		}
 		
 	}
+	
+	/**
+	 * @def verifies collisions with water
+	 * @param newX
+	 * @param newY
+	 * @param size
+	 */
 	public void verifyAguaColl(float newX, float newY,float size){
-        if(newY>=561){
+        if(newY>=555){
             gameData.getPlayerData().vidas--;
             if(gameData.getPlayerData().vidas<=0) {
                 gameData.reset();
@@ -140,6 +157,12 @@ public class GameStateController {
 		}
 		
 	}
+	/**
+	 * @def verifies collisions with lianas and allow grabbing
+	 * @param newX
+	 * @param newY
+	 * @param size
+	 */
 	public void verifylianasColl(float newX, float newY,float size) {
 		PlayerData data=gameData.getPlayerData();
 		lista<ZonaDetectable> lianas =gameData.getLianasObj();
@@ -151,10 +174,7 @@ public class GameStateController {
 			float l =liana.getSize();
 		
 		    float tolerance=30;
-		    
-		    System.out.println("==============================================");
-		    System.out.println("player posx: "+ newX+"player posy: "+ newY);
-		    System.out.println("liana posx: "+ pX+"liana posy: "+ pY);
+
 		    
 		    if(((newX+size)>pX && (newX<(pX)))){
 				if(((newY<=(pY+l))&&(newY)>=pY)) {
@@ -193,7 +213,6 @@ public class GameStateController {
 					PlayerData data=gameData.getPlayerData();
 
 					data.setCanJump(true);					
-			
 				}	
 		    }
 
@@ -204,8 +223,6 @@ public class GameStateController {
 					continue;
 				else
 					return false;
-					
-				
 			}				
 		}
 		return true;

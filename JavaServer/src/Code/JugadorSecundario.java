@@ -20,9 +20,12 @@ public class JugadorSecundario extends Thread{
     		String res=arr[1];
 			String[] arrRes = res.split(",");
     		if( arr[0].equals("cocodrilo") ){
-    			Serv.makeCocodrilo(Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]), Integer.parseInt(arrRes[4]));
+
+    			
+    			Serv.makeCocodrilo(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]),
+    					Serv.getController().gameData.getLianasObj().get(Integer.parseInt(arrRes[4])));
     		}else if( arr[0].equals("fruta") ){
-    			Serv.doFruta(Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]), Integer.parseInt(arrRes[4]));
+    			Serv.doFruta(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
     		}else{
     			System.out.println("Eliminar fruta");
     		}
@@ -32,5 +35,5 @@ public class JugadorSecundario extends Thread{
     }
 }
 
-//cocodrilo (,192.168.0.15,1,20,200,)
-//fruta (,192.168.0.15,1,20,200,)
+//cocodrilo (,1,20,200,1,)
+//fruta (,0,130,500,)

@@ -11,6 +11,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import Models.Fruta;
+import Models.ZonaDetectable;
 import Models.cocodrilo;
 
 public class Servidor {
@@ -21,7 +22,11 @@ public class Servidor {
     private BufferedInputStream bis ;
     private DataInputStream dis ;
     private GameStateController controller;
-    private JugadorSecundario second;
+    public GameStateController getController() {
+		return controller;
+	}
+
+	private JugadorSecundario second;
     int velocity= 10;
     public void print(String message) {
     	System.out.println(message + "\n");
@@ -29,15 +34,13 @@ public class Servidor {
     public Servidor() {
     	processCalls();
     }
-    public void makeCocodrilo(int tipo,int x, int y){
-    	controller.gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1));
+    public void makeCocodrilo(int tipo,int x, int y,ZonaDetectable liana){
+    	controller.gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1,liana));
     }
-    public void doFruta(int tipo,int x, int y){
-    	if(tipo==0){
-    		controller.gameData.getFrutasObj().add(new Fruta(x,y,10,100));
-    	}else {
-    		//borrar la vara
-    	}
+    public void doFruta(int puntaje,int x, int y){
+    	
+    		controller.gameData.getFrutasObj().add(new Fruta(x,y,10,puntaje));
+
     }
   
     /**
@@ -108,6 +111,8 @@ public class Servidor {
         	controller.moverMono(-velocity, 0);
         if(request.compareTo("rigth")==0)  
         	controller.moverMono(velocity, 00);
+        
+        else controller.updateObjsPosition();
         	
     }
 

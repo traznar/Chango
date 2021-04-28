@@ -3,7 +3,7 @@ package Models;
 import org.json.simple.JSONObject;
 
 public class Fruta extends ObjetosJuego{
-	public static int puntos;
+	public  int puntos;
 	
 	public Fruta(int posicionX,int posicionY,int size, int pts){
 		super(posicionX,posicionY,size);
