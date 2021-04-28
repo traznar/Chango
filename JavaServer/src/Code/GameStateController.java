@@ -33,7 +33,21 @@ public class GameStateController {
 	}
 	
 	
+   public void makeCocodrilo(int tipo,int x, int y,ZonaDetectable liana){
+    	gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1,liana));
+    }
+    public void makeFruta(int puntaje,int x, int y){
+    		gameData.getFrutasObj().add(new Fruta(x,y,10,puntaje));
+    }
+    public void makeLiana(int size,int x, int y){
+		gameData.getLianasObj().add(new ZonaDetectable(x,y,size));
+    }
+	    
 	
+	
+	/**
+	 * @def update all objects position
+	 */
 	public void updateObjsPosition() {
 		gameData.update();
 	}

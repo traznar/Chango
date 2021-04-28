@@ -2,6 +2,7 @@
 #include "Sockets.c"
 #define MAX_FPS 20
 static SDL_Window  *window=NULL;
+static char User[20];
 static SDL_Renderer *renderer=NULL;
 bool initClient(){
     return makeRequest(true,"request\n\r");
@@ -40,6 +41,7 @@ int processEvents(SDL_Window *window, GameState *game){
         }
     }
     const Uint8 *state =SDL_GetKeyboardState(NULL);
+    if(strcmp(User,"Jugador")!=0)return done;
     if (state[SDL_SCANCODE_A]){
         char* left;
         left="left";

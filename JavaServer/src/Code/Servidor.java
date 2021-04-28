@@ -28,20 +28,14 @@ public class Servidor {
 
 	private JugadorSecundario second;
     int velocity= 10;
-    public void print(String message) {
-    	System.out.println(message + "\n");
-    }
+
     public Servidor() {
     	processCalls();
     }
-    public void makeCocodrilo(int tipo,int x, int y,ZonaDetectable liana){
-    	controller.gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1,liana));
-    }
-    public void doFruta(int puntaje,int x, int y){
-    	
-    		controller.gameData.getFrutasObj().add(new Fruta(x,y,10,puntaje));
+    
+    
 
-    }
+    
   
     /**
      * @def processCalls do the server is listenning for connections, respond to request and process client data
@@ -50,11 +44,11 @@ public class Servidor {
     public void processCalls() {
     	  try {
               ServerSocket servidor= new ServerSocket(port); //intenta hacer la conexion
-              print("Server iniciado");
+              System.out.println("Server iniciado");
               controller=GameStateController.getInstance(); 
               controller=GameStateController.getInstance(); 
-              second=new JugadorSecundario();
-              second.Serv=this;
+              second=new JugadorSecundario(controller);
+      
               second.start();
 
               while (true) {
@@ -64,13 +58,10 @@ public class Servidor {
                       InetAddress location=  puenteS.getInetAddress();
                       String IpRemota = location.getHostAddress();
                   }
-
                   // Aca leo la info que me envio el cliente, por el momento solo tiene un readline, pero deberia iterarse mas tarde
                   
                   InputStreamReader streamReader= new InputStreamReader(puenteS.getInputStream());
                   BufferedReader reader= new BufferedReader(streamReader);
-                  
-                  	
                   
                   puenteS.getOutputStream().write((controller.getGameData()+ "\n").getBytes());  
                   String value= reader.readLine();
@@ -116,4 +107,5 @@ public class Servidor {
         	
     }
 
+ 
 }
