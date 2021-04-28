@@ -12,7 +12,7 @@ typedef struct {
     char *name;
     int animFrame, facingLeft;
     int time;
-    SDL_Texture *donkeyImage[3];
+    SDL_Texture *donkeyImage[4];
 
 } DonkeyJr;
 typedef struct {
@@ -21,7 +21,8 @@ typedef struct {
 } Plataformas;
 typedef struct {
     int x,y;
-    SDL_Texture *aguaImagen;
+    int animFrame;
+    SDL_Texture *aguaImagen[2];
 } Agua;
 typedef struct {
     int x,y,size;
@@ -29,11 +30,14 @@ typedef struct {
 } Liana;
 typedef struct {
     int x,y;
-    SDL_Texture *kongImagen;
+    int animFrame;
+    int time;
+    SDL_Texture *kongImagen[3];
 } Kong;
 typedef struct {
     int x,y;
-    SDL_Texture *lagartoImagen;
+    int animFrame;
+    SDL_Texture *lagartoImagen[2];
 } Lagarto;
 typedef struct {
     int x,y;

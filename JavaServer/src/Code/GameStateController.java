@@ -136,7 +136,11 @@ public class GameStateController {
     }
 	public void verifyGanador(float newX, float newY,float size){
 		if( ((newY+size>=80)&&(newY<=80)) && ((newX+size>=130) && (newX<=130)) ){
+			int puntaje= gameData.getPlayerData().puntuacion;
+			int vidas= gameData.getPlayerData().vidas;
 			gameData.reset();
+			gameData.getPlayerData().vidas=vidas+1;
+			gameData.getPlayerData().puntuacion=puntaje;
 			gameData.upVelocity(5);
 			System.out.print("Gano");
 		}

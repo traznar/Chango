@@ -13,10 +13,60 @@ bool initClient(){
  * @param window: the window is rendered, game: the gamestate
  * @return int event caching
  */
+void animarKong(GameState *game){
+    game->kong.time++;
+    if(game->kong.time % 4 == 0)
+    {
+        if(game->kong.animFrame == 0)
+        {
+            game->kong.animFrame = 1;
+        }
+        else if(game->kong.animFrame == 1){
+            game->kong.animFrame = 2;
+        }
+        else
+        {
+            game->kong.animFrame = 0;
+        }
+    }
+    // game->kong.time++;
+    if(game->kong.time % 2 == 0)
+    {
+        for(int i=0 ;i<3;i++){
+            if(game->lagarto[i].animFrame == 0)
+            {
+                game->lagarto[i].animFrame = 1;
+            }
+            else
+            {
+                game->lagarto[i].animFrame = 0;
+            }
+        }
+
+    }
+    if(game->kong.time % 4 == 0)
+    {
+        if(game->agua.animFrame == 0)
+        {
+            game->agua.animFrame = 1;
+        }
+        else
+        {
+            game->agua.animFrame = 0;
+        }
+    }
+}
+/**
+ * @def process inputs events like the buttom input
+ * @param window
+ * @param window: the window is rendered, game: the gamestate
+ * @return int event caching
+ */
 int processEvents(SDL_Window *window, GameState *game){
     SDL_Event event;
     int done=0;
     game->donkeyJr.time++;
+    animarKong(game);
     while (SDL_PollEvent(&event)){
         switch (event.type) {
             case SDL_WINDOWEVENT_CLOSE:{
@@ -47,7 +97,7 @@ int processEvents(SDL_Window *window, GameState *game){
         left="left";
         makeRequest(FALSE, left);
         game->donkeyJr.facingLeft=0;
-        if(game->donkeyJr.time % 3 == 0)
+        if(game->donkeyJr.time % 2 == 0)
         {
             if(game->donkeyJr.animFrame == 0)
             {
@@ -86,11 +136,16 @@ int processEvents(SDL_Window *window, GameState *game){
         char* up;
         up="up";
         makeRequest(FALSE, up);
+        if(game->donkeyJr.time % 1 == 0)
+        {
+            game->donkeyJr.animFrame = 3;
+        }
     }
     if (state[SDL_SCANCODE_S]){
         char* down;
         down="down";
         makeRequest(FALSE, down);
+
     }
 
     return done;

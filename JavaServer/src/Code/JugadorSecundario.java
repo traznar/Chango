@@ -24,18 +24,25 @@ public class JugadorSecundario extends Thread{
     		String key=arr[0];
 			String[] arrRes = res.split(",");
 			switch(key){
-				case "cocodrilo":
-	    			controller.makeCocodrilo(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]),
-	    			controller.gameData.getLianasObj().get(Integer.parseInt(arrRes[4])));
-				case "fruta":
-					if( Integer.parseInt(arrRes[4])==0){
-						controller.makeFruta(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
-					}else {
-						controller.deleteFruta(cont);
-						cont++;
-					};
-				//case "liana":
-				//	controller.makeLiana(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
+			case "cocodrilo":{
+    			controller.makeCocodrilo(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]),
+    			controller.gameData.getLianasObj().get(Integer.parseInt(arrRes[4])));
+    			break;
+			}
+			case "liana":{
+				controller.makeLiana(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
+				break;
+			}
+			case "fruta":{
+
+				if( Integer.parseInt(arrRes[4])==0){
+					controller.makeFruta(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
+				}else {
+					controller.deleteFruta(cont);
+					cont++;
+				}
+				break;
+			}	
 			}
     	}else{
     		System.out.println("error de sintaxis: revise el manual de usuario");

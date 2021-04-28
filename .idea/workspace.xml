@@ -13,18 +13,26 @@
   <component name="ChangeListManager">
     <list default="true" id="c01c0856-a8a9-4cc9-9943-b04a12195245" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.c" beforeDir="false" afterPath="$PROJECT_DIR$/Game.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaServer/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/bin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/bin/Code/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/bin/Code/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaServer/src/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/GameStateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/GameStateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/JugadorSecundario.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/JugadorSecundario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Models/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Models/GameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Models/cocodrilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Models/cocodrilo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/Servidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/Servidor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaServer/src/Models/Administrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.19.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.19.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/graphics.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DonkeyC.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DonkeyC.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libDonkeyC.dll.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libDonkeyC.dll.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics.c" beforeDir="false" afterPath="$PROJECT_DIR$/graphics.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics.h" beforeDir="false" afterPath="$PROJECT_DIR$/graphics.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +62,18 @@
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\usuario\Nueva carpeta\Chango" />
+      <recent name="C:\Users\usuario\Nueva carpeta\Chango\cmake-build-debug" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DonkeyC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DonkeyC" TARGET_NAME="DonkeyC" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DonkeyC" RUN_TARGET_NAME="DonkeyC">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -76,7 +95,12 @@
       <updated>1619392508836</updated>
       <workItem from="1619392509992" duration="630000" />
       <workItem from="1619619171694" duration="4617000" />
-      <workItem from="1619628869390" duration="3164000" />
+      <workItem from="1619628869390" duration="5387000" />
+      <workItem from="1619636271866" duration="165000" />
+      <workItem from="1619637182173" duration="2218000" />
+      <workItem from="1619642385071" duration="1610000" />
+      <workItem from="1619644041657" duration="57000" />
+      <workItem from="1619644358810" duration="885000" />
     </task>
     <servers />
   </component>

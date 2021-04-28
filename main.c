@@ -12,8 +12,8 @@ int main(int argc, char* args[]){
 
     //printf("Enter Ip: ");
     //scanf("%s", UserIp);
-    //printf("Introduzca el tipo de usuario (observador,jugador): ");
-    //scanf("%s", User);
+    printf("Introduzca el tipo de usuario (observador,jugador): ");
+    scanf("%s", User);
 
     bool connect= initClient();
     if(connect){
