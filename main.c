@@ -14,6 +14,7 @@ int main(int argc, char* args[]){
     //scanf("%s", UserIp);
     //printf("Introduzca el tipo de usuario (observador,jugador): ");
     //scanf("%s", User);
+
     bool connect= initClient();
     if(connect){
         pthread_t thread_Update;

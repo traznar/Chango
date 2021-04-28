@@ -95,11 +95,14 @@ public class GameData {
 		return obj.toJSONString();
 		
 	}
-	
+	public void upVelocity(int aumento){
+		for(int i=0;i<cocodrilosObj.size();i++) {
+			cocodrilosObj.get(i).velocity+=aumento;
+		}
+	}
 	
 	
 	public void update() {
-		
 		for(int i=0;i<cocodrilosObj.size();i++) {
 			cocodrilo coco=cocodrilosObj.get(i);
 			if(coco.posY>560)

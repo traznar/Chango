@@ -1,6 +1,4 @@
 package Code;
-
-
 import Models.PlayerData;
 import Models.ZonaDetectable;
 import Models.cocodrilo;
@@ -136,11 +134,10 @@ public class GameStateController {
             }
         }
     }
-	//fruta (,x100,y130,50,)  && ((newY+size>=1) && (newY+size<=100) )
 	public void verifyGanador(float newX, float newY,float size){
-		// && ((newX+size>=130) && (newX<=130))
 		if( ((newY+size>=80)&&(newY<=80)) && ((newX+size>=130) && (newX<=130)) ){
 			gameData.reset();
+			gameData.upVelocity(5);
 			System.out.print("Gano");
 		}
 	}

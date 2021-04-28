@@ -33,7 +33,9 @@ public class JugadorSecundario extends Thread{
 					}else {
 						controller.deleteFruta(cont);
 						cont++;
-					};			
+					};
+				//case "liana":
+				//	controller.makeLiana(Integer.parseInt(arrRes[1]), Integer.parseInt(arrRes[2]), Integer.parseInt(arrRes[3]));
 			}
     	}else{
     		System.out.println("error de sintaxis: revise el manual de usuario");
@@ -43,3 +45,4 @@ public class JugadorSecundario extends Thread{
 
 //cocodrilo (,1,20,200,1,)
 //fruta (,100,130,500,0,)
+//liana (,380,370,300,)
