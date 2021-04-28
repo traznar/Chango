@@ -15,15 +15,11 @@ public class GameData {
 	private lista<cocodrilo> cocodrilosObj;
 	private lista<ZonaDetectable> plataformasObj;
 	private DKMario dkMario;
-	
 	 
 	
 	public GameData() {
 		reset();
 	}
-	/**
-	 * @def reset initializes all objects coordinates
-	 */
 	public void reset() {
 		gameState="initialize";
 		playerData= new PlayerData(12,502,48);
@@ -44,31 +40,29 @@ public class GameData {
 		frutasObj.add(new Fruta(200,550,10,100));
 		frutasObj.add(new Fruta(150,200,10,100));
 		
-
-		lianasObj.add(new ZonaDetectable(40 ,400,150));
-		lianasObj.add(new ZonaDetectable(190,400,200));
-		lianasObj.add(new ZonaDetectable(230,100,380));
-		lianasObj.add(new ZonaDetectable(330,0,280));
+		cocodrilosObj.add(new cocodrilo(0,10,200,1));//azul 0 y rojo 1
+		cocodrilosObj.add(new cocodrilo(0,70,300,1));
+		cocodrilosObj.add(new cocodrilo(1,300,200,1));
+		cocodrilosObj.add(new cocodrilo(1,100,700,1));
 		
-		cocodrilosObj.add(new cocodrilo(0,10,200,1,lianasObj.get(0)));//azul 0 y rojo 1
-		cocodrilosObj.add(new cocodrilo(0,70,300,1,lianasObj.get(1)));
-		cocodrilosObj.add(new cocodrilo(1,300,200,1,lianasObj.get(2)));
-		cocodrilosObj.add(new cocodrilo(1,100,700,1,lianasObj.get(3)));
-	
+		lianasObj.add(new ZonaDetectable(140,400,60));
+		lianasObj.add(new ZonaDetectable(190,400,60));
+		lianasObj.add(new ZonaDetectable(350,300,60));
+		lianasObj.add(new ZonaDetectable(450,300,60));
+		lianasObj.add(new ZonaDetectable(490,190,40));
 	}
 	@SuppressWarnings("unchecked")
-	/**
-	 * @def converts gameData to Json format
-	 * @return
-	 */
-	public String toJson() {		
-			JSONArray lianasj      = new JSONArray();
+	
+	public String toJson() {
+		
+		
+			JSONArray lianasj   = new JSONArray();
 			JSONArray frutasj      = new JSONArray();
 			JSONArray cocodrilosj  = new JSONArray();
 			JSONArray plataformasj = new JSONArray();
 			
 			for(int i =0;i<lianasObj.size();i++) 
-				lianasj.add(lianasObj.get(i).toJsonObj());
+				lianasj.add(lianasObj.get(i).toJsonString());
 			
 			for(int i =0;i<frutasObj.size();i++) 
 				frutasj.add(frutasObj.get(i).toJsonObj());
@@ -95,41 +89,6 @@ public class GameData {
 		return obj.toJSONString();
 		
 	}
-	public void upVelocity(int aumento){
-		for(int i=0;i<cocodrilosObj.size();i++) {
-			cocodrilosObj.get(i).velocity+=aumento;
-		}
-	}
-	
-	
-	public void update() {
-		for(int i=0;i<cocodrilosObj.size();i++) {
-			cocodrilo coco=cocodrilosObj.get(i);
-			if(coco.posY>560)
-				cocodrilosObj.remove(i);
-			coco.move();
-		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public String getGameState() {
 		return gameState;
 	}

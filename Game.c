@@ -2,7 +2,6 @@
 #include "Sockets.c"
 #define MAX_FPS 20
 static SDL_Window  *window=NULL;
-static char User[20];
 static SDL_Renderer *renderer=NULL;
 bool initClient(){
     return makeRequest(true,"request\n\r");
@@ -13,10 +12,54 @@ bool initClient(){
  * @param window: the window is rendered, game: the gamestate
  * @return int event caching
  */
+ void animarKong(GameState *game){
+    game->kong.time++;
+    if(game->kong.time % 4 == 0)
+    {
+        if(game->kong.animFrame == 0)
+        {
+            game->kong.animFrame = 1;
+        }
+        else if(game->kong.animFrame == 1){
+            game->kong.animFrame = 2;
+        }
+        else
+        {
+            game->kong.animFrame = 0;
+        }
+    }
+   // game->kong.time++;
+    if(game->kong.time % 2 == 0)
+    {
+        for(int i=0 ;i<3;i++){
+        if(game->lagarto[i].animFrame == 0)
+        {
+            game->lagarto[i].animFrame = 1;
+        }
+        else
+        {
+            game->lagarto[i].animFrame = 0;
+        }
+    }
+
+    }
+    if(game->kong.time % 4 == 0)
+    {
+        if(game->agua.animFrame == 0)
+        {
+            game->agua.animFrame = 1;
+        }
+        else
+        {
+            game->agua.animFrame = 0;
+        }
+    }
+ }
 int processEvents(SDL_Window *window, GameState *game){
     SDL_Event event;
     int done=0;
     game->donkeyJr.time++;
+    animarKong(game);
     while (SDL_PollEvent(&event)){
         switch (event.type) {
             case SDL_WINDOWEVENT_CLOSE:{
@@ -41,13 +84,12 @@ int processEvents(SDL_Window *window, GameState *game){
         }
     }
     const Uint8 *state =SDL_GetKeyboardState(NULL);
-    //if(strcmp(User,"jugador")!=0)return done;
     if (state[SDL_SCANCODE_A]){
         char* left;
         left="left";
         makeRequest(FALSE, left);
         game->donkeyJr.facingLeft=0;
-        if(game->donkeyJr.time % 3 == 0)
+        if(game->donkeyJr.time % 2 == 0)
         {
             if(game->donkeyJr.animFrame == 0)
             {
@@ -86,13 +128,16 @@ int processEvents(SDL_Window *window, GameState *game){
         char* up;
         up="up";
         makeRequest(FALSE, up);
+        if(game->donkeyJr.time % 1 == 0)
+        {
+            game->donkeyJr.animFrame = 3;
+        }
     }
     if (state[SDL_SCANCODE_S]){
         char* down;
         down="down";
         makeRequest(FALSE, down);
     }
-
     return done;
 }
 /**
@@ -134,10 +179,17 @@ void* update(){
     SDL_DestroyTexture(gameState.donkeyJr.donkeyImage[1]);
     SDL_DestroyTexture(gameState.donkeyJr.donkeyImage[2]);
 
-    SDL_DestroyTexture(gameState.lianas->lianaImagen);
-    SDL_DestroyTexture(gameState.agua.aguaImagen);
+    SDL_DestroyTexture(gameState.liana->lianaImagen);
+    //SDL_DestroyTexture(gameState.agua.aguaImagen);
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);
-    SDL_DestroyTexture(gameState.kong.kongImagen);
+    SDL_DestroyTexture(gameState.kong.kongImagen[0]);
+    SDL_DestroyTexture(gameState.kong.kongImagen[1]);
+    SDL_DestroyTexture(gameState.kong.kongImagen[2]);
+
+    SDL_DestroyTexture(gameState.agua.aguaImagen[0]);
+    SDL_DestroyTexture(gameState.agua.aguaImagen[1]);
+
+
     SDL_DestroyTexture(gameState.frutas->frutasImagen);
 
     destroyLabel(&gameState);

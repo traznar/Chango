@@ -32,13 +32,13 @@ void donkeyKongJrUpdater(int posX, int posY,int vidas,int puntaje){
     SDL_Color white= {255,255,255,255};
     char* str1[10];
     char* str [10];
-    sprintf(str1,"%i",vidas);
+    sprintf(str1,"%d",vidas);
     SDL_Surface *tmp2 = TTF_RenderText_Blended(gameState.font, strcat(str1," <-Vidas") , white);
     gameState.donkeyJr.x=posX;
     gameState.donkeyJr.y=posY;
     gameState.labelvidas =SDL_CreateTextureFromSurface(gameState.renderer, tmp2);
     SDL_FreeSurface(tmp2);
-    sprintf(str,"%i",puntaje);
+    sprintf(str,"%d",puntaje);
     SDL_Surface *tmp = TTF_RenderText_Blended(gameState.font, strcat(str," <-Puntaje") , white);
     gameState.label = SDL_CreateTextureFromSurface(gameState.renderer, tmp);
     SDL_FreeSurface(tmp);
@@ -94,9 +94,6 @@ void processJson(char *Json){
     //===============================Ejemplo de Arrays===========================>
 
     cJSON *arrayPlat = cJSON_Parse(getStringFromJson(Json, "plataformas"));
-
-    cJSON *arrayCoco = cJSON_Parse(getStringFromJson(Json, "cocodrilos"));
-    cJSON *arrayLianas = cJSON_Parse(getStringFromJson(Json, "lianas"));
     int num = cJSON_GetArraySize(arrayPlat);
 
     for (int i = 0; i < num; i++) {
@@ -108,7 +105,7 @@ void processJson(char *Json){
         cargarPlataforma(&gameState,i,posX,posY);
     }
     //Creacion de cocodrilos
-
+    cJSON *arrayCoco = cJSON_Parse(getStringFromJson(Json, "cocodrilos"));
     int numero = cJSON_GetArraySize(arrayCoco);
 
     for (int i = 0; i < numero; i++) {
@@ -121,17 +118,16 @@ void processJson(char *Json){
         crearCocodrilosAzules(&gameState,i,posX,posY,type);
 
     }
-
+    cJSON *arrayLianas = cJSON_Parse(getStringFromJson(Json, "lianas"));
     int numLianas = cJSON_GetArraySize(arrayLianas);
 
     for (int i = 0; i < numLianas; i++) {
-        cJSON *elemt;
-        elemt = cJSON_GetArrayItem(arrayLianas, i);
-        char* text=cJSON_Print(elemt);
-        int posX=getNumberFromJson(text,"posX");
-        int posY=getNumberFromJson(text,"posY");
-        int size=getNumberFromJson(text,"size");
-        crearLianas(&gameState,i,posX,posY,size);
+        cJSON *elemto;
+        elemto = cJSON_GetArrayItem(arrayLianas, i);
+        char* texto=cJSON_Print(elemto);
+        // int posX=getNumberFromJson(texto,"posX");
+        // int posY=getNumberFromJson(texto,"posY");
+        // int type =getNumberFromJson(texto,"type");
     }
     cJSON *arrayFrutas = cJSON_Parse(getStringFromJson(Json, "frutas"));
 

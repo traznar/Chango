@@ -11,22 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c01c0856-a8a9-4cc9-9943-b04a12195245" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/bin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/bin/Code/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/bin/Code/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/GameStateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/GameStateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/JugadorSecundario.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/JugadorSecundario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Code/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Code/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Models/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Models/GameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer/src/Models/cocodrilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer/src/Models/cocodrilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DonkeyC.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DonkeyC.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DonkeyC.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/libDonkeyC.dll.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libDonkeyC.dll.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-    </list>
+    <list default="true" id="c01c0856-a8a9-4cc9-9943-b04a12195245" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,20 +32,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration name="DonkeyC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DonkeyC" TARGET_NAME="DonkeyC" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DonkeyC" RUN_TARGET_NAME="DonkeyC">
+    <configuration name="DonkeyC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DonkeyC" TARGET_NAME="DonkeyC" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DonkeyC" RUN_TARGET_NAME="DonkeyC">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -75,8 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619392508836</updated>
       <workItem from="1619392509992" duration="630000" />
-      <workItem from="1619619171694" duration="4617000" />
-      <workItem from="1619628869390" duration="3164000" />
+      <workItem from="1619584108328" duration="174000" />
     </task>
     <servers />
   </component>

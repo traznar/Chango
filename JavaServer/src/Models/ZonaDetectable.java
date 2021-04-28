@@ -12,7 +12,6 @@ public class ZonaDetectable extends ObjetosJuego{
 		super(posicionX,posicionY,size);
 
 	}
-	
 	public String toJsonString() {
 		JSONObject obj = new JSONObject();
 		obj.put("posX", posX);

@@ -4,7 +4,7 @@
 
 #ifndef DONKEYC_GRAPHICS_H
 #define DONKEYC_GRAPHICS_H
-#include "SDL2\SDL_ttf.h"
+#include "SDL_ttf.h"
 typedef struct {
     int x,y;
     int dx,dy;
@@ -12,7 +12,7 @@ typedef struct {
     char *name;
     int animFrame, facingLeft;
     int time;
-    SDL_Texture *donkeyImage[3];
+    SDL_Texture *donkeyImage[4];
 
 } DonkeyJr;
 typedef struct {
@@ -21,19 +21,24 @@ typedef struct {
 } Plataformas;
 typedef struct {
     int x,y;
-    SDL_Texture *aguaImagen;
+    int animFrame;
+    SDL_Texture *aguaImagen[2];
 } Agua;
 typedef struct {
-    int x,y,size;
+    int x,y;
     SDL_Texture *lianaImagen;
 } Liana;
 typedef struct {
     int x,y;
-    SDL_Texture *kongImagen;
+    int animFrame;
+    SDL_Texture *kongImagen[3];
+    int time;
+
 } Kong;
 typedef struct {
     int x,y;
-    SDL_Texture *lagartoImagen;
+    int animFrame;
+    SDL_Texture *lagartoImagen[2];
 } Lagarto;
 typedef struct {
     int x,y;
@@ -45,13 +50,14 @@ typedef struct {
     DonkeyJr donkeyJr;
     Plataformas plataformas[7];
     Agua agua;
-    Liana lianas[15];
+    Liana liana[15];
     Kong kong;
     SDL_Renderer *renderer;
     SDL_Texture *label;
     SDL_Texture *labelvidas;
     Lagarto lagarto[10];
     Frutas frutas[10];
+
 
     TTF_Font *font;
 } GameState;
@@ -62,7 +68,7 @@ void doRender(SDL_Renderer *renderer, GameState *game);
 void showScore(GameState *game);
 //void crearPlataforma(int posX, int posY, GameState *game, int i);
 void crearCocodrilosAzules(GameState *game,int i,int posX, int posY,int type);
-void crearLianas(GameState *game,int i,int posX, int posY,int size);
+void crearLianas(GameState *game,int posX, int posY);
 void crearFrutas(GameState *game,int posX, int posY,int i);
 void cargarPlataforma(GameState *game,int i,int posX, int posY);
 
