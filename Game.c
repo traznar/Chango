@@ -15,6 +15,7 @@ bool initClient(){
 int processEvents(SDL_Window *window, GameState *game){
     SDL_Event event;
     int done=0;
+    game->donkeyJr.time++;
     while (SDL_PollEvent(&event)){
         switch (event.type) {
             case SDL_WINDOWEVENT_CLOSE:{
@@ -43,11 +44,41 @@ int processEvents(SDL_Window *window, GameState *game){
         char* left;
         left="left";
         makeRequest(FALSE, left);
+        game->donkeyJr.facingLeft=0;
+        if(game->donkeyJr.time % 3 == 0)
+        {
+            if(game->donkeyJr.animFrame == 0)
+            {
+                game->donkeyJr.animFrame = 1;
+            }
+            else if(game->donkeyJr.animFrame == 1){
+                game->donkeyJr.animFrame = 2;
+            }
+            else
+            {
+                game->donkeyJr.animFrame = 0;
+            }
+        }
     }
     if (state[SDL_SCANCODE_D]){
         char* right;
         right="rigth";
         makeRequest(FALSE, right);
+        game->donkeyJr.facingLeft=1;
+        if(game->donkeyJr.time % 3 == 0)
+        {
+            if(game->donkeyJr.animFrame == 0)
+            {
+                game->donkeyJr.animFrame = 1;
+            }
+            else if(game->donkeyJr.animFrame == 1){
+                game->donkeyJr.animFrame = 2;
+            }
+            else
+            {
+                game->donkeyJr.animFrame = 0;
+            }
+        }
     }
     if (state[SDL_SCANCODE_W]){
         char* up;
@@ -59,6 +90,7 @@ int processEvents(SDL_Window *window, GameState *game){
         down="down";
         makeRequest(FALSE, down);
     }
+
     return done;
 }
 /**
@@ -96,7 +128,10 @@ void* update(){
         usleep(1000000/MAX_FPS);
 
     }
-    SDL_DestroyTexture(gameState.donkeyJr.donkeyImage);
+    SDL_DestroyTexture(gameState.donkeyJr.donkeyImage[0]);
+    SDL_DestroyTexture(gameState.donkeyJr.donkeyImage[1]);
+    SDL_DestroyTexture(gameState.donkeyJr.donkeyImage[2]);
+    
     SDL_DestroyTexture(gameState.lianas->lianaImagen);
     SDL_DestroyTexture(gameState.agua.aguaImagen);
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);

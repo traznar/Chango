@@ -112,9 +112,12 @@ void doRender(SDL_Renderer *renderer, GameState *game) {
     showScore(game);
     drawLabel(game);
 
-    SDL_RenderCopy(renderer,game->donkeyJr.donkeyImage,NULL,&donkeyRect);
+    // SDL_RenderCopy(renderer,game->donkeyJr.donkeyImage,NULL,&donkeyRect);
+    SDL_RenderCopyEx(renderer,game->donkeyJr.donkeyImage[game->donkeyJr.animFrame],
+                     NULL,&donkeyRect,0,NULL,(game->donkeyJr.facingLeft==0));
 
     SDL_RenderPresent(renderer);
+
 
 }
 
@@ -173,7 +176,18 @@ void loadGame(GameState *game) {
 
 
 
-    donkeyImageSurface= IMG_Load("Donkey.jpg");
+    donkeyImageSurface= IMG_Load("1.jpg");
+    game->donkeyJr.donkeyImage[0]=SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
+    SDL_FreeSurface(donkeyImageSurface);
+
+    donkeyImageSurface= IMG_Load("2.jpg");
+    game->donkeyJr.donkeyImage[1]=SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
+    SDL_FreeSurface(donkeyImageSurface);
+
+    donkeyImageSurface= IMG_Load("3.jpg");
+    game->donkeyJr.donkeyImage[2]=SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
+    SDL_FreeSurface(donkeyImageSurface);
+
     aguaImageSurface =IMG_Load("agua.jpg");
     lianaImageSurface =IMG_Load("lianas.jpg");
     kongImageSurface =IMG_Load("kong.jpg");
@@ -193,9 +207,6 @@ void loadGame(GameState *game) {
         exit(1);
     }
 
-    game->donkeyJr.x=12;
-    game->donkeyJr.y= 555;
-
     game->agua.x=0;
     game->agua.y=605;
 /*
@@ -208,7 +219,7 @@ void loadGame(GameState *game) {
     game->frutas[1].x=110;
     game->frutas[1].y=55;
 */
-    game->donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
+   // game->donkeyJr.donkeyImage = SDL_CreateTextureFromSurface(game->renderer,donkeyImageSurface);
     game->kong.kongImagen =SDL_CreateTextureFromSurface(game->renderer,kongImageSurface);
 
    // game->frutas[1].frutasImagen = SDL_CreateTextureFromSurface(game->renderer,frutasImageSurface);
