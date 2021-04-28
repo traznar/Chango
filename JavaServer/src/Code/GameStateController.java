@@ -36,11 +36,11 @@ public class GameStateController {
 	 * @param x
 	 * @param y
 	 */
-	public  void moverMono(int x, int y) {
+	public  void moverMono(float x, float y) {
 		PlayerData data=gameData.getPlayerData();
-		int size=data.getSize();
-		int newX=data.posX+x;
-		int newY=data.posY+y;
+		float size=data.getSize();
+		float newX=data.posX+x;
+		float newY=data.posY+y;
 		
 		if((newX>0 & newX<572 & newY >5 & newY < 565) && verifyrPlatformColl(newX,newY,size,data.posX,data.posY)) {
 			data.posX=newX;
@@ -53,7 +53,7 @@ public class GameStateController {
 		
 	}
 	
-	public void jump( int velocity) {
+	public void jump( float velocity) {
 		
 		PlayerData data=gameData.getPlayerData();
 		if(data.isGrab()) {
@@ -74,13 +74,13 @@ public class GameStateController {
 	 * @param newY
 	 * @param size
 	 */
-	public void verifyEnemyColl(int newX, int newY,int size) {
+	public void verifyEnemyColl(float newX, float newY,float size) {
 		lista<cocodrilo> lagartos=gameData.getCocodrilosObj();
 		for(int i=0; i< lagartos.size(); i++) {
 			cocodrilo lagartillo=lagartos.get(i);
-			int pX=lagartillo.posX;
-			int pY=lagartillo.posY;
-			int l =lagartillo.getSize();
+			float pX=lagartillo.posX;
+			float pY=lagartillo.posY;
+			float l =lagartillo.getSize();
 		    float h=15;
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
@@ -100,7 +100,7 @@ public class GameStateController {
 		}
 		
 	}
-	public void verifyAguaColl(int newX, int newY,int size){
+	public void verifyAguaColl(float newX, float newY,float size){
         if(newY>=561){
             gameData.getPlayerData().vidas--;
             if(gameData.getPlayerData().vidas<=0) {
@@ -117,13 +117,13 @@ public class GameStateController {
 	 * @param newY
 	 * @param size
 	 */
-	public void verifyFruitsColl(int newX, int newY,int size) {
+	public void verifyFruitsColl(float newX, float newY,float size) {
 		lista<Fruta> frutas=gameData.getFrutasObj();
 		for(int i=0; i< frutas.size(); i++) {
 			Fruta frutilla=frutas.get(i);
-			int pX=frutilla.posX;
-			int pY=frutilla.posY;
-			int l =frutilla.getSize();
+			float pX=frutilla.posX;
+			float pY=frutilla.posY;
+			float l =frutilla.getSize();
 		    float h=5;
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
@@ -140,32 +140,31 @@ public class GameStateController {
 		}
 		
 	}
-	public void verifylianasColl(int newX, int newY,int size) {
+	public void verifylianasColl(float newX, float newY,float size) {
 		PlayerData data=gameData.getPlayerData();
 		lista<ZonaDetectable> lianas =gameData.getLianasObj();
 		
 		for(int i=0; i< lianas.size(); i++) {
 			ZonaDetectable liana=lianas.get(i);
-			int pX=liana.posX;
-			int pY=liana.posY;
-			int l =liana.getSize();
-		    float h=5;
-		    float tolerance=size;
-
-		    if(Math.abs(newX+size-pX)<tolerance){
-	
-				if(Math.abs(newY+size-(pY+l))<tolerance) {
-
+			float pX=liana.posX;
+			float pY=liana.posY;
+			float l =liana.getSize();
+		
+		    float tolerance=30;
+		    
+		    System.out.println("==============================================");
+		    System.out.println("player posx: "+ newX+"player posy: "+ newY);
+		    System.out.println("liana posx: "+ pX+"liana posy: "+ pY);
+		    
+		    if(((newX+size)>pX && (newX<(pX)))){
+				if(((newY<=(pY+l))&&(newY)>=pY)) {
 					data.setGrab(true);					
 					return;
-			
 				}	
 		    }
-
 			
 		}
 		data.setGrab(false);
-
 	}
 	
 	/**
@@ -175,16 +174,16 @@ public class GameStateController {
 	 * @param size
 	 * @return boolean canIwalt To this position? 
 	 */
-	public boolean verifyrPlatformColl(int newX, int newY,int size,int oldX, int oldY) {
+	public boolean verifyrPlatformColl(float newX, float newY,float size,float oldX, float oldY) {
 		
 		lista<ZonaDetectable> plataformas =gameData.getPlataformasObj();
 		
 
 		for(int i=0; i< plataformas.size(); i++) {
 			ZonaDetectable plataforma=plataformas.get(i);
-			int pX=plataforma.posX;
-			int pY=plataforma.posY;
-			int l =plataforma.getSize();
+			float pX=plataforma.posX;
+			float pY=plataforma.posY;
+			float l =plataforma.getSize();
 		    float h=5;
 		    float tolerance=6;
 		    

@@ -49,7 +49,9 @@ public class GameData {
 		cocodrilosObj.add(new cocodrilo(1,100,700,1));
 		
 		lianasObj.add(new ZonaDetectable(40 ,400,150));
-		lianasObj.add(new ZonaDetectable(190,400,230));
+		lianasObj.add(new ZonaDetectable(190,400,200));
+		lianasObj.add(new ZonaDetectable(230,100,380));
+		lianasObj.add(new ZonaDetectable(330,0,280));
 	
 	}
 	@SuppressWarnings("unchecked")

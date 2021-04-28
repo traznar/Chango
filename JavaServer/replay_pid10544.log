@@ -1,0 +1,56 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 120 ciObject found
+instanceKlass jdk/internal/access/foreign/MemorySegmentProxy
+instanceKlass java/util/concurrent/locks/AbstractQueuedSynchronizer$Node
+instanceKlass sun/nio/ch/ExtendedSocketOption$1
+instanceKlass sun/nio/ch/ExtendedSocketOption
+instanceKlass sun/nio/ch/OptionKey
+instanceKlass sun/nio/ch/SocketOptionRegistry$LazyInitialization
+instanceKlass sun/nio/ch/SocketOptionRegistry$RegistryKey
+instanceKlass sun/nio/ch/SocketOptionRegistry
+instanceKlass java/net/NetworkInterface
+instanceKlass java/net/StandardSocketOptions$StdSocketOption
+instanceKlass java/net/SocketOption
+instanceKlass java/net/StandardSocketOptions
+instanceKlass java/lang/StringCoding$StringEncoder
+instanceKlass org/json/simple/JSONValue
+instanceKlass org/json/simple/JSONStreamAware
+instanceKlass org/json/simple/JSONAware
+instanceKlass java/nio/file/FileSystems$DefaultFileSystemHolder$1
+instanceKlass java/nio/file/FileSystems$DefaultFileSystemHolder
+instanceKlass java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock
+instanceKlass java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock
+instanceKlass java/util/concurrent/locks/ReentrantReadWriteLock
+instanceKlass java/util/concurrent/locks/ReadWriteLock
+instanceKlass jdk/internal/module/ModuleReferences$SafeCloseModuleReader
+instanceKlass java/lang/invoke/VarHandle$AccessDescriptor
+instanceKlass java/net/Socket
+instanceKlass estructurasDatos/lista
+instanceKlass Models/ObjetosJuego
+instanceKlass Models/GameData
+instanceKlass Code/GameStateController
+instanceKlass java/nio/charset/CoderResult
+instanceKlass sun/net/NetHooks
+instanceKlass sun/nio/ch/NioSocketImpl$$Lambda$49+0x00000001000a4a00
+instanceKlass java/lang/invoke/LambdaForm$DMH+0x0000000100065840
+instanceKlass sun/net/ext/ExtendedSocketOptions
+instanceKlass java/net/Inet6Address$Inet6AddressHolder
+instanceKlass sun/nio/ch/Net$1
+instanceKlass java/net/ProtocolFamily
+instanceKlass sun/nio/ch/Net
+instanceKlass java/net/Inet4AddressImpl
+instanceKlass java/net/InetAddress$PlatformNameService
+instanceKlass java/net/InetAddress$NameService
+instanceKlass java/net/Inet6AddressImpl
+instanceKlass java/net/InetAddressImpl
+instanceKlass java/net/InetAddressImplFactory
+instanceKlass java/util/concurrent/ConcurrentSkipListMap$Node
+instanceKlass java/lang/invoke/VarForm
+instanceKlass java/lang/invoke/VarHandleGuards
+instanceKlass jdk/internal/util/Preconditions$1
+instanceKlass java/lang/invoke/VarHandle$1
+instanceKlass java/lang/ClassValue$Version
+instanceKlass java/lang/ClassValue$Identity
+instanceKlass java/lang/ClassValue

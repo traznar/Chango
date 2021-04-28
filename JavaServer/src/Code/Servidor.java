@@ -10,6 +10,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import Models.Fruta;
+import Models.cocodrilo;
+
 public class Servidor {
 	
     private int port = 8081;
@@ -18,6 +21,7 @@ public class Servidor {
     private BufferedInputStream bis ;
     private DataInputStream dis ;
     private GameStateController controller;
+    private JugadorSecundario second;
     int velocity= 10;
     public void print(String message) {
     	System.out.println(message + "\n");
@@ -25,7 +29,16 @@ public class Servidor {
     public Servidor() {
     	processCalls();
     }
-    
+    public void makeCocodrilo(int tipo,int x, int y){
+    	controller.gameData.getCocodrilosObj().add(new cocodrilo(tipo,x,y,1));
+    }
+    public void doFruta(int tipo,int x, int y){
+    	if(tipo==0){
+    		controller.gameData.getFrutasObj().add(new Fruta(x,y,10,100));
+    	}else {
+    		//borrar la vara
+    	}
+    }
   
     /**
      * @def processCalls do the server is listenning for connections, respond to request and process client data
@@ -36,7 +49,10 @@ public class Servidor {
               ServerSocket servidor= new ServerSocket(port); //intenta hacer la conexion
               print("Server iniciado");
               controller=GameStateController.getInstance(); 
-          
+              controller=GameStateController.getInstance(); 
+              second=new JugadorSecundario();
+              second.Serv=this;
+              second.start();
 
               while (true) {
                   Socket puenteS = servidor.accept();
@@ -74,7 +90,7 @@ public class Servidor {
     public void gravityAction() {
 
     	if(!controller.gameData.getPlayerData().isGrab())
-    		controller.moverMono(0, velocity/2);
+    		controller.moverMono(0, velocity/1.5f);
     }
     
     /**

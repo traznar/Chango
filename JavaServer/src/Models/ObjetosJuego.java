@@ -3,8 +3,8 @@ package Models;
 import org.json.simple.JSONObject;
 
 public abstract class ObjetosJuego {
-	public int posX;
-	public int posY;
+	public float posX;
+	public float posY;
 	protected int size;
 	
 	
@@ -13,10 +13,10 @@ public abstract class ObjetosJuego {
 		this.posY=posiY;
 		this.size=size;
 	}
-	public int getPosiX(){
+	public float getPosiX(){
 		return posX;
 	}
-	public int getPosiY(){
+	public float getPosiY(){
 		return posY;
 	}
 	public int getSize(){
@@ -36,10 +36,10 @@ public abstract class ObjetosJuego {
 	public void setSize(int size){
 		this.size=size;
 	}
-	public int getPosiTotalX(){
+	public float getPosiTotalX(){
 		return (posX+size);
 	}
-	public int getPosiTotalY(){
+	public float getPosiTotalY(){
 		return (posY+size);
 	}	
 	/**
