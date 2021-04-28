@@ -7,7 +7,7 @@ import Models.cocodrilo;
 import estructurasDatos.lista;
 import Models.Fruta;
 import Models.GameData;
-
+import java.lang.Math;
 
 
 public class GameStateController {
@@ -48,6 +48,7 @@ public class GameStateController {
 			verifyFruitsColl(newX,newY,size);
 			verifyEnemyColl(newX,newY,size);
 			verifyAguaColl(newX,newY,size);
+			verifylianasColl(newX,newY,size);
 		}
 		
 	}
@@ -55,14 +56,15 @@ public class GameStateController {
 	public void jump( int velocity) {
 		
 		PlayerData data=gameData.getPlayerData();
-		if(data.CanJump()) {
-			
-			System.out.println("Brincando");
-			moverMono(0,velocity);
-			data.setCanFall(true);
-			data.setCanJump(false);
+		if(data.isGrab()) {
+			moverMono(0,-velocity);
 		}
-			
+		else {
+			if(data.CanJump()) {
+				moverMono(0,-5*velocity);
+				data.setCanJump(false);
+			}
+		}
 		
 	}
 	
@@ -138,6 +140,34 @@ public class GameStateController {
 		}
 		
 	}
+	public void verifylianasColl(int newX, int newY,int size) {
+		PlayerData data=gameData.getPlayerData();
+		lista<ZonaDetectable> lianas =gameData.getLianasObj();
+		
+		for(int i=0; i< lianas.size(); i++) {
+			ZonaDetectable liana=lianas.get(i);
+			int pX=liana.posX;
+			int pY=liana.posY;
+			int l =liana.getSize();
+		    float h=5;
+		    float tolerance=size;
+
+		    if(Math.abs(newX+size-pX)<tolerance){
+	
+				if(Math.abs(newY+size-(pY+l))<tolerance) {
+
+					data.setGrab(true);					
+					return;
+			
+				}	
+		    }
+
+			
+		}
+		data.setGrab(false);
+
+	}
+	
 	/**
 	 * @def verifies collisions with platforms
 	 * @param newX
@@ -156,21 +186,18 @@ public class GameStateController {
 			int pY=plataforma.posY;
 			int l =plataforma.getSize();
 		    float h=5;
-		    float tolerance=5;
-		    System.out.println("can jump: "+gameData.getPlayerData().CanJump());
+		    float tolerance=6;
+		    
 		    if(((oldX+size)>pX && (oldX<(pX+l)))){
 		    	
-				if((oldY+size)-(pY+h)<tolerance) {
+				if(Math.abs((oldY+size)-(pY+h))<tolerance && oldY<pY) {
 					PlayerData data=gameData.getPlayerData();
-					data.setCanFall(false);
-					
+
 					data.setCanJump(true);					
 			
 				}	
 		    }
 
-		    
-		
 			if(((newX+size)<=pX || (newX>=(pX+l))) )
 				continue;
 			else {

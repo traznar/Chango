@@ -72,7 +72,9 @@ public class Servidor {
      * @def simulate gravity action
      */
     public void gravityAction() {
-    	controller.moverMono(0, velocity);
+
+    	if(!controller.gameData.getPlayerData().isGrab())
+    		controller.moverMono(0, velocity/2);
     }
     
     /**
@@ -83,7 +85,7 @@ public class Servidor {
     	
     	
         if(request.compareTo("up")==0)
-            	controller.jump(-5*velocity);      	
+            controller.jump(velocity);      	
         if(request.compareTo("down")==0)  
         	controller.moverMono(0, velocity);
         if(request.compareTo("left")==0)  

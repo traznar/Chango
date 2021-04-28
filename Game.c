@@ -97,7 +97,7 @@ void* update(){
 
     }
     SDL_DestroyTexture(gameState.donkeyJr.donkeyImage);
-    SDL_DestroyTexture(gameState.liana->lianaImagen);
+    SDL_DestroyTexture(gameState.lianas->lianaImagen);
     SDL_DestroyTexture(gameState.agua.aguaImagen);
     SDL_DestroyTexture(gameState.plataformas->plataformaImagen);
     SDL_DestroyTexture(gameState.kong.kongImagen);

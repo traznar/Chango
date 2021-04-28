@@ -7,8 +7,9 @@ public class PlayerData extends ObjetosJuego{
 	public int puntuacion;
 	public int vidas;
 	public int animation;
-	public boolean canFall=true;
-	public boolean canJump=true;
+
+	private boolean canJump=true;
+	private boolean grab=false;
 	
 	public PlayerData(int posiX,int posiY,int size){
 		super(posiX,posiY,size);
@@ -27,12 +28,7 @@ public class PlayerData extends ObjetosJuego{
 		return obj.toJSONString();
 
 	}
-	public boolean CanFall() {
-		return canFall;
-	}
-	public void setCanFall(boolean canFall) {
-		this.canFall = canFall;
-	}
+
 	public boolean CanJump() {
 		return canJump;
 	}
@@ -43,5 +39,11 @@ public class PlayerData extends ObjetosJuego{
 	public JSONObject toJsonObj() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public boolean isGrab() {
+		return grab;
+	}
+	public void setGrab(boolean grab) {
+		this.grab = grab;
 	}
 }

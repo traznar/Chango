@@ -48,11 +48,9 @@ public class GameData {
 		cocodrilosObj.add(new cocodrilo(1,300,200,1));
 		cocodrilosObj.add(new cocodrilo(1,100,700,1));
 		
-		lianasObj.add(new ZonaDetectable(140,400,60));
-		lianasObj.add(new ZonaDetectable(190,400,60));
-		lianasObj.add(new ZonaDetectable(350,300,60));
-		lianasObj.add(new ZonaDetectable(450,300,60));
-		lianasObj.add(new ZonaDetectable(490,190,40));
+		lianasObj.add(new ZonaDetectable(40 ,400,150));
+		lianasObj.add(new ZonaDetectable(190,400,230));
+	
 	}
 	@SuppressWarnings("unchecked")
 	/**
@@ -62,13 +60,13 @@ public class GameData {
 	public String toJson() {
 		
 		
-			JSONArray lianasj   = new JSONArray();
+			JSONArray lianasj      = new JSONArray();
 			JSONArray frutasj      = new JSONArray();
 			JSONArray cocodrilosj  = new JSONArray();
 			JSONArray plataformasj = new JSONArray();
 			
 			for(int i =0;i<lianasObj.size();i++) 
-				lianasj.add(lianasObj.get(i).toJsonString());
+				lianasj.add(lianasObj.get(i).toJsonObj());
 			
 			for(int i =0;i<frutasObj.size();i++) 
 				frutasj.add(frutasObj.get(i).toJsonObj());

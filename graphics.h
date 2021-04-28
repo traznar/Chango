@@ -20,7 +20,7 @@ typedef struct {
     SDL_Texture *aguaImagen;
 } Agua;
 typedef struct {
-    int x,y;
+    int x,y,size;
     SDL_Texture *lianaImagen;
 } Liana;
 typedef struct {
@@ -41,7 +41,7 @@ typedef struct {
     DonkeyJr donkeyJr;
     Plataformas plataformas[7];
     Agua agua;
-    Liana liana[15];
+    Liana lianas[15];
     Kong kong;
     SDL_Renderer *renderer;
     SDL_Texture *label;
@@ -58,7 +58,7 @@ void doRender(SDL_Renderer *renderer, GameState *game);
 void showScore(GameState *game);
 //void crearPlataforma(int posX, int posY, GameState *game, int i);
 void crearCocodrilosAzules(GameState *game,int i,int posX, int posY,int type);
-void crearLianas(GameState *game,int posX, int posY);
+void crearLianas(GameState *game,int i,int posX, int posY,int size);
 void crearFrutas(GameState *game,int posX, int posY,int i);
 void cargarPlataforma(GameState *game,int i,int posX, int posY);
 
